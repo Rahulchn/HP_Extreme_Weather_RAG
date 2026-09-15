@@ -1,0 +1,28 @@
+# Environment variables and secrets
+.env
+.env.local
+*.env
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Local virtual environment
+venv/
+.venv/
+env/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Local working and generated artifacts
+scratch/
+*.log
+
+# Large source archives and milestone backups
+# The runnable repository retains processed data, SQLite, and the FAISS index.
+data/raw/
+data/backup/

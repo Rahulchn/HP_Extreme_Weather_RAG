@@ -1,0 +1,2280 @@
+{
+  "timestamp": "2026-09-08T06:04:59.738463+00:00",
+  "metrics": {
+    "benchmark_summary": {
+      "total_questions": 52,
+      "structured_questions_count": 10,
+      "semantic_document_questions_count": 16,
+      "hybrid_questions_count": 10,
+      "negative_adversarial_questions_count": 16
+    },
+    "decoupled_performance": {
+      "overall_routing_accuracy_pct": 100.0,
+      "structured_query_accuracy_pct": 100.0,
+      "semantic_passage_hit1_pct": 87.5,
+      "semantic_passage_hit3_pct": 93.75,
+      "semantic_passage_hit5_pct": 100.0,
+      "document_source_hit1_pct": 100.0,
+      "hybrid_structured_branch_accuracy_pct": 100.0,
+      "hybrid_document_branch_accuracy_pct": 100.0,
+      "hybrid_fusion_accuracy_pct": 100.0,
+      "negative_query_accuracy_pct": 100.0,
+      "provenance_completeness_pct": 100.0
+    },
+    "average_latencies_ms": {
+      "STRUCTURED": 2.6,
+      "DOCUMENT": 687.57,
+      "HYBRID": 87.62,
+      "NEGATIVE_REJECTED": 0.25
+    },
+    "milestone1_immutability": {
+      "verified": true,
+      "details": "All 8 Milestone 1 datasets remain strictly identical and immutable"
+    },
+    "gate_evaluations": {
+      "routing_safety": {
+        "target": ">= 95.0%",
+        "measured": 100.0,
+        "status": "PASSED"
+      },
+      "structured_accuracy": {
+        "target": ">= 95.0%",
+        "measured": 100.0,
+        "status": "PASSED"
+      },
+      "semantic_passage_hit1": {
+        "target": ">= 70.0%",
+        "measured": 87.5,
+        "status": "PASSED"
+      },
+      "semantic_passage_hit3": {
+        "target": ">= 80.0%",
+        "measured": 93.75,
+        "status": "PASSED"
+      },
+      "semantic_passage_hit5": {
+        "target": ">= 85.0%",
+        "measured": 100.0,
+        "status": "PASSED"
+      },
+      "document_source_hit1": {
+        "target": ">= 90.0%",
+        "measured": 100.0,
+        "status": "PASSED"
+      },
+      "hybrid_fusion_accuracy": {
+        "target": ">= 90.0%",
+        "measured": 100.0,
+        "status": "PASSED"
+      },
+      "hybrid_branches": {
+        "target": "100.0%",
+        "measured": "100.0% / 100.0%",
+        "status": "PASSED"
+      },
+      "negative_query_accuracy": {
+        "target": "100.0%",
+        "measured": 100.0,
+        "status": "PASSED"
+      },
+      "provenance_completeness": {
+        "target": "100.0%",
+        "measured": 100.0,
+        "status": "PASSED"
+      },
+      "milestone1_immutability": {
+        "target": "100% Immutable",
+        "measured": "Verified",
+        "status": "PASSED"
+      }
+    },
+    "final_verdict": "READY_FOR_MILESTONE_3"
+  },
+  "results": [
+    {
+      "question_id": "GQ_STR_01",
+      "track": "STRUCTURED",
+      "question": "What was the maximum rainfall in Kangra in 2023?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 4.05,
+      "status": "OK",
+      "intent": "MAX_RAINFALL",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_02",
+      "track": "STRUCTURED",
+      "question": "How many documented flash floods occurred in Kullu between 2011 and 2025?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 1.54,
+      "status": "OK",
+      "intent": "EVENT_COUNT",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_03",
+      "track": "STRUCTURED",
+      "question": "Which district had the most documented cloudburst events?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 3.49,
+      "status": "OK",
+      "intent": "STATISTICAL_COMPARISON",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_04",
+      "track": "STRUCTURED",
+      "question": "What was the rainfall in Shimla on 2023-07-09?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 1.68,
+      "status": "OK",
+      "intent": "DATE_RAINFALL",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_05",
+      "track": "STRUCTURED",
+      "question": "What was the average annual rainfall in Mandi between 2011 and 2025?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 9.32,
+      "status": "OK",
+      "intent": "AVERAGE_RAINFALL",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_06",
+      "track": "STRUCTURED",
+      "question": "List documented cloudburst events in Mandi district in 2023.",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 1.36,
+      "status": "OK",
+      "intent": "EVENT_LOOKUP",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_07",
+      "track": "STRUCTURED",
+      "question": "What was the annual rainfall in Kangra in 2026?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 0.08,
+      "status": "INSUFFICIENT_FOR_FULL_YEAR",
+      "intent": "ANNUAL_TOTAL_INCOMPLETE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "Year 2026 is an in-progress partial period. Full-year annual aggregates cannot be calculated without introducing severe scientific distortion. Only telemetry/observations up to current date are available."
+      ],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_08",
+      "track": "STRUCTURED",
+      "question": "How many cloudburst events were documented in Kangra in 2016?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 1.32,
+      "status": "ZERO_DOCUMENTED_EVENTS",
+      "intent": "EVENT_COUNT",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_09",
+      "track": "STRUCTURED",
+      "question": "Was zero rainfall recorded anywhere in Kangra on 2011-01-02?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 1.45,
+      "status": "ZERO_RAINFALL",
+      "intent": "DATE_RAINFALL",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_STR_10",
+      "track": "STRUCTURED",
+      "question": "What was the highest single-day rainfall recorded in Kullu in August 2023?",
+      "expected_route": "STRUCTURED",
+      "actual_route": "STRUCTURED",
+      "route_match": true,
+      "latency_ms": 1.77,
+      "status": "OK",
+      "intent": "MAX_RAINFALL_RANGE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 0,
+      "sources": [
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "structured_query_correct": true
+    },
+    {
+      "question_id": "GQ_DOC_01",
+      "track": "DOCUMENT",
+      "question": "What happened during the Boh village disaster in July 2021 according to the GSI study?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 9411.29,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_GSI_WADIA_EVENT_STUDIES"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_GSI_BOH_2021_P002_01",
+        "CHK_DOC_GSI_BOH_2021_P001_01",
+        "CHK_DOC_GSI_BOH_2021_P004_01",
+        "CHK_DOC_GSI_BOH_2021_P006_01",
+        "CHK_DOC_GSI_BOH_2021_P005_01"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_GSI_BOH_2021_P001_01",
+        "CHK_DOC_GSI_BOH_2021_P002_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P002_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 2,
+          "semantic_score": 0.6828,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7728
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P001_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 1,
+          "semantic_score": 0.6543,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7443
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P004_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 4,
+          "semantic_score": 0.6242,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7142
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P006_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 6,
+          "semantic_score": 0.5702,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6602
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P005_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 5,
+          "semantic_score": 0.566,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.656
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_02",
+      "track": "DOCUMENT",
+      "question": "What geotechnical ground stabilisation and drainage measures did GSI recommend for Boh village?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 110.23,
+      "status": "OK",
+      "intent": "EVENT_NARRATIVE",
+      "routing_confidence": 0.9,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_GSI_WADIA_EVENT_STUDIES"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_GSI_BOH_2021_P003_01",
+        "CHK_DOC_GSI_BOH_2021_P001_01",
+        "CHK_DOC_GSI_BOH_2021_P002_01",
+        "CHK_DOC_GSI_BOH_2021_P004_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P003_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_GSI_BOH_2021_P003_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P003_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 3,
+          "semantic_score": 0.746,
+          "document_scope_score": 0.055,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.816
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P001_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 1,
+          "semantic_score": 0.676,
+          "document_scope_score": 0.055,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.746
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P002_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 2,
+          "semantic_score": 0.6689,
+          "document_scope_score": 0.055,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7389
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_BOH_2021_P004_01",
+          "document_id": "DOC_GSI_BOH_2021",
+          "page_number": 4,
+          "semantic_score": 0.6434,
+          "document_scope_score": 0.055,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7134
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P003_02",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 3,
+          "semantic_score": 0.5932,
+          "document_scope_score": 0.055,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6632
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_03",
+      "track": "DOCUMENT",
+      "question": "What geological factors and rock mass conditions triggered the 2017 Kotrupi rockslide according to GSI?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 98.37,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_GSI_WADIA_EVENT_STUDIES"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_GSI_KOTRUPI_2017_P015_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P008_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P009_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P002_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P003_01"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_GSI_KOTRUPI_2017_P007_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P009_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P015_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P015_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 15,
+          "semantic_score": 0.6808,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7708
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P008_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 8,
+          "semantic_score": 0.6732,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7632
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P009_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 9,
+          "semantic_score": 0.6524,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7424
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P002_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 2,
+          "semantic_score": 0.6504,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7404
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P003_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 3,
+          "semantic_score": 0.6444,
+          "document_scope_score": 0.075,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7344
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_04",
+      "track": "DOCUMENT",
+      "question": "How did antecedent rainfall and precipitation patterns act as a trigger mechanism for the Kotrupi landslide?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 107.0,
+      "status": "OK",
+      "intent": "GENERAL_DOCUMENT_SEARCH",
+      "routing_confidence": 0.75,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_GSI_WADIA_EVENT_STUDIES"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_GSI_KOTRUPI_2017_P015_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P016_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P025_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P014_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P009_01"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_GSI_KOTRUPI_2017_P015_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P016_01",
+        "CHK_DOC_GSI_KOTRUPI_2017_P026_02"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P015_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 15,
+          "semantic_score": 0.7225,
+          "document_scope_score": 0.0,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7375
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P016_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 16,
+          "semantic_score": 0.6882,
+          "document_scope_score": 0.0,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7032
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P025_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 25,
+          "semantic_score": 0.6611,
+          "document_scope_score": 0.0,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6761
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P014_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 14,
+          "semantic_score": 0.6533,
+          "document_scope_score": 0.0,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6683
+        },
+        {
+          "chunk_id": "CHK_DOC_GSI_KOTRUPI_2017_P009_01",
+          "document_id": "DOC_GSI_KOTRUPI_2017",
+          "page_number": 9,
+          "semantic_score": 0.6515,
+          "document_scope_score": 0.0,
+          "authority_score": 0.015,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6665
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_05",
+      "track": "DOCUMENT",
+      "question": "What does the PDNA report indicate about total damage and losses to the road transport sector in 2023?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 107.82,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_PDNA_2023"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P116_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P110_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P106_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P109_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P106_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P110_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P116_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P116_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 116,
+          "semantic_score": 0.6854,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7904
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 33,
+          "semantic_score": 0.6826,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7876
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P110_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 110,
+          "semantic_score": 0.6783,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7833
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P106_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 106,
+          "semantic_score": 0.656,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.761
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P109_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 109,
+          "semantic_score": 0.6556,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7606
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_06",
+      "track": "DOCUMENT",
+      "question": "What does the 2023 PDNA report about power sector damage, transmission poles, and HPSEBL infrastructure?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 114.17,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_PDNA_2023"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P148_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P160_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P151_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P152_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P074_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P148_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P157_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P158_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P159_02"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P148_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 148,
+          "semantic_score": 0.6581,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7631
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P160_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 160,
+          "semantic_score": 0.6053,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7103
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P151_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 151,
+          "semantic_score": 0.5878,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6928
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P152_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 152,
+          "semantic_score": 0.5878,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6928
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P074_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 74,
+          "semantic_score": 0.5822,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6872
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_07",
+      "track": "DOCUMENT",
+      "question": "What does the PDNA indicate regarding flood damage to water supply schemes and water treatment plants?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 105.3,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_PDNA_2023"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P131_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P129_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P148_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P130_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P033_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P126_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P127_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P131_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P136_02"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P131_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 131,
+          "semantic_score": 0.701,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.786
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P129_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 129,
+          "semantic_score": 0.6883,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7733
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P148_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 148,
+          "semantic_score": 0.6847,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7697
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P130_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 130,
+          "semantic_score": 0.6845,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7695
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 33,
+          "semantic_score": 0.6764,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7614
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_08",
+      "track": "DOCUMENT",
+      "question": "What were the agricultural crop losses and damage to allied sectors reported in the 2023 PDNA?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 102.1,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_PDNA_2023"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P171_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P030_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P170_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P074_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P170_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P171_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P173_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P171_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 171,
+          "semantic_score": 0.6448,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7498
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 33,
+          "semantic_score": 0.626,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.731
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P030_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 30,
+          "semantic_score": 0.6157,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7207
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P170_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 170,
+          "semantic_score": 0.5992,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7042
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P074_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 74,
+          "semantic_score": 0.5981,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7031
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_09",
+      "track": "DOCUMENT",
+      "question": "What overall recovery and reconstruction principles does the PDNA recommend for building back better?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 105.64,
+      "status": "OK",
+      "intent": "EVENT_NARRATIVE",
+      "routing_confidence": 0.9,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_PDNA_2023"
+      ],
+      "warnings": [],
+      "semantic_hit@1": false,
+      "semantic_hit@3": false,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P162_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P031_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P094_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P084_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P010_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P010_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P036_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P084_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P121_02"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P162_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 162,
+          "semantic_score": 0.6088,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6938
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P031_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 31,
+          "semantic_score": 0.6047,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6897
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P094_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 94,
+          "semantic_score": 0.5988,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6838
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P084_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 84,
+          "semantic_score": 0.5967,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6817
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P010_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 10,
+          "semantic_score": 0.5948,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6798
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_10",
+      "track": "DOCUMENT",
+      "question": "What does the PDNA report about damage and loss to houses and human settlements across the affected districts?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 109.31,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_PDNA_2023"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P040_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P051_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P074_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P031_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P034_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P048_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 33,
+          "semantic_score": 0.7609,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.8459
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P040_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 40,
+          "semantic_score": 0.718,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.803
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P051_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 51,
+          "semantic_score": 0.7172,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.8022
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P074_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 74,
+          "semantic_score": 0.7036,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7886
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P031_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 31,
+          "semantic_score": 0.6896,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7746
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_11",
+      "track": "DOCUMENT",
+      "question": "What emergency search, rescue, and evacuation operations were conducted by NDRF and SDRF during the 2023 monsoon?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 108.03,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_MEMO_2023_P028_01",
+        "CHK_DOC_HPSDMA_MEMO_2024_P027_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P029_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P022_02",
+        "CHK_DOC_HPSDMA_MEMO_2023_P019_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_MEMO_2023_P025_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P028_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P029_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P028_01",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 28,
+          "semantic_score": 0.7118,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7618
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2024_P027_01",
+          "document_id": "DOC_HPSDMA_MEMO_2024",
+          "page_number": 27,
+          "semantic_score": 0.703,
+          "document_scope_score": 0.0,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.733
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P029_01",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 29,
+          "semantic_score": 0.6433,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6933
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P022_02",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 22,
+          "semantic_score": 0.6376,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6876
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P019_02",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 19,
+          "semantic_score": 0.6365,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6865
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_12",
+      "track": "DOCUMENT",
+      "question": "What devastation occurred in Kullu district and Sainj valley due to flash floods according to the 2023 memorandum?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 103.09,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS"
+      ],
+      "warnings": [],
+      "semantic_hit@1": false,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_MEMO_2023_P019_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P017_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P019_02",
+        "CHK_DOC_HPSDMA_MEMO_2023_P018_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P016_01"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_MEMO_2023_P016_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P017_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P018_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P019_02"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P019_01",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 19,
+          "semantic_score": 0.6917,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7967
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P017_01",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 17,
+          "semantic_score": 0.6891,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7941
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P019_02",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 19,
+          "semantic_score": 0.6762,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7812
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P018_01",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 18,
+          "semantic_score": 0.66,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.765
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P016_01",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 16,
+          "semantic_score": 0.6563,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7613
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_13",
+      "track": "DOCUMENT",
+      "question": "What does the SEOC 10-year loss summary report record for human lives lost in Himachal Pradesh from 2016 to 2025?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 108.43,
+      "status": "OK",
+      "intent": "EVENT_NARRATIVE",
+      "routing_confidence": 0.9,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_10YR_LOSSES_2016_2025",
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_HPSDMA_PDNA_2023"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_10YR_LOSSES_P001_01",
+        "CHK_DOC_HPSDMA_MEMO_2016_P032_01",
+        "CHK_DOC_HPSDMA_MEMO_2016_P016_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P014_02",
+        "CHK_DOC_HPSDMA_MEMO_2016_P020_01"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_10YR_LOSSES_P001_01",
+        "CHK_DOC_HPSDMA_10YR_LOSSES_P001_02"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_10YR_LOSSES_P001_01",
+          "document_id": "DOC_HPSDMA_10YR_LOSSES",
+          "page_number": 1,
+          "semantic_score": 0.7035,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7885
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2016_P032_01",
+          "document_id": "DOC_HPSDMA_MEMO_2016",
+          "page_number": 32,
+          "semantic_score": 0.6271,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6771
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2016_P016_01",
+          "document_id": "DOC_HPSDMA_MEMO_2016",
+          "page_number": 16,
+          "semantic_score": 0.6216,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6716
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P014_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 14,
+          "semantic_score": 0.6359,
+          "document_scope_score": 0.0,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.6659
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2016_P020_01",
+          "document_id": "DOC_HPSDMA_MEMO_2016",
+          "page_number": 20,
+          "semantic_score": 0.612,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.662
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_14",
+      "track": "DOCUMENT",
+      "question": "How does the HPSDMA hazard vulnerability assessment classify disaster proneness and landslide hazards across districts?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 102.35,
+      "status": "OK",
+      "intent": "LANDSLIDE_IMPACT_NARRATIVE",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_HISTORICAL_LOSS_2007_2015",
+        "SRC_HPSDMA_PDNA_2023"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_HPSDMA_LR3_2007_2015_P025_01",
+        "CHK_DOC_HPSDMA_LR3_2007_2015_P026_01",
+        "CHK_DOC_HPSDMA_LR3_2007_2015_P013_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P016_02",
+        "CHK_DOC_HPSDMA_PDNA_2023_P178_02"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_HPSDMA_LR3_2007_2015_P025_01",
+        "CHK_DOC_HPSDMA_LR3_2007_2015_P026_01",
+        "CHK_DOC_HPSDMA_LR3_2007_2015_P030_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_LR3_2007_2015_P025_01",
+          "document_id": "DOC_HPSDMA_LR3_2007_2015",
+          "page_number": 25,
+          "semantic_score": 0.7189,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.8039
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_LR3_2007_2015_P026_01",
+          "document_id": "DOC_HPSDMA_LR3_2007_2015",
+          "page_number": 26,
+          "semantic_score": 0.7052,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7902
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_LR3_2007_2015_P013_01",
+          "document_id": "DOC_HPSDMA_LR3_2007_2015",
+          "page_number": 13,
+          "semantic_score": 0.6712,
+          "document_scope_score": 0.055,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7562
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P016_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 16,
+          "semantic_score": 0.7252,
+          "document_scope_score": 0.0,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7552
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P178_02",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 178,
+          "semantic_score": 0.7191,
+          "document_scope_score": 0.0,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7491
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_15",
+      "track": "DOCUMENT",
+      "question": "What monthly rainfall totals and percentage departures from normal were recorded across HP in the 2023 monsoon report?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 106.95,
+      "status": "OK",
+      "intent": "EVENT_NARRATIVE",
+      "routing_confidence": 0.9,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_HPSDMA_PDNA_2023",
+        "SRC_IMD_SHIMLA_DISTRICT_MONSOON"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P003_01",
+        "CHK_DOC_HPSDMA_MEMO_2024_P013_01",
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P006_01",
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P005_01",
+        "CHK_DOC_HPSDMA_PDNA_2023_P002_01"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P002_01",
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P003_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_IMD_MONSOON_REPORT_2023_P003_01",
+          "document_id": "DOC_IMD_MONSOON_REPORT_2023",
+          "page_number": 3,
+          "semantic_score": 0.6525,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7575
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2024_P013_01",
+          "document_id": "DOC_HPSDMA_MEMO_2024",
+          "page_number": 13,
+          "semantic_score": 0.7239,
+          "document_scope_score": 0.0,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7539
+        },
+        {
+          "chunk_id": "CHK_DOC_IMD_MONSOON_REPORT_2023_P006_01",
+          "document_id": "DOC_IMD_MONSOON_REPORT_2023",
+          "page_number": 6,
+          "semantic_score": 0.6399,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7449
+        },
+        {
+          "chunk_id": "CHK_DOC_IMD_MONSOON_REPORT_2023_P005_01",
+          "document_id": "DOC_IMD_MONSOON_REPORT_2023",
+          "page_number": 5,
+          "semantic_score": 0.6302,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7352
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_PDNA_2023_P002_01",
+          "document_id": "DOC_HPSDMA_PDNA_2023",
+          "page_number": 2,
+          "semantic_score": 0.682,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.732
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_DOC_16",
+      "track": "DOCUMENT",
+      "question": "Which meteorological stations recorded extremely heavy rainfall exceeding 200 mm in July 2023 according to IMD Shimla?",
+      "expected_route": "DOCUMENT",
+      "actual_route": "DOCUMENT",
+      "route_match": true,
+      "latency_ms": 101.08,
+      "status": "OK",
+      "intent": "EVENT_NARRATIVE",
+      "routing_confidence": 0.9,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_IMD_SHIMLA_DISTRICT_MONSOON"
+      ],
+      "warnings": [],
+      "semantic_hit@1": true,
+      "semantic_hit@3": true,
+      "semantic_hit@5": true,
+      "document_source_hit@1": true,
+      "retrieved_chunks": [
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P005_01",
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P001_01",
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P006_01",
+        "CHK_DOC_HPSDMA_MEMO_2023_P012_01",
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P002_01"
+      ],
+      "relevant_chunk_ids": [
+        "CHK_DOC_IMD_MONSOON_REPORT_2023_P005_01"
+      ],
+      "score_decomposition": [
+        {
+          "chunk_id": "CHK_DOC_IMD_MONSOON_REPORT_2023_P005_01",
+          "document_id": "DOC_IMD_MONSOON_REPORT_2023",
+          "page_number": 5,
+          "semantic_score": 0.6708,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7758
+        },
+        {
+          "chunk_id": "CHK_DOC_IMD_MONSOON_REPORT_2023_P001_01",
+          "document_id": "DOC_IMD_MONSOON_REPORT_2023",
+          "page_number": 1,
+          "semantic_score": 0.7121,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.05,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7671
+        },
+        {
+          "chunk_id": "CHK_DOC_IMD_MONSOON_REPORT_2023_P006_01",
+          "document_id": "DOC_IMD_MONSOON_REPORT_2023",
+          "page_number": 6,
+          "semantic_score": 0.6562,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7612
+        },
+        {
+          "chunk_id": "CHK_DOC_HPSDMA_MEMO_2023_P012_01",
+          "document_id": "DOC_HPSDMA_MEMO_2023",
+          "page_number": 12,
+          "semantic_score": 0.6915,
+          "document_scope_score": 0.02,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7415
+        },
+        {
+          "chunk_id": "CHK_DOC_IMD_MONSOON_REPORT_2023_P002_01",
+          "document_id": "DOC_IMD_MONSOON_REPORT_2023",
+          "page_number": 2,
+          "semantic_score": 0.6297,
+          "document_scope_score": 0.075,
+          "authority_score": 0.03,
+          "cover_penalty": 0.0,
+          "diversity_penalty": 0.0,
+          "final_score": 0.7347
+        }
+      ]
+    },
+    {
+      "question_id": "GQ_HYB_01",
+      "track": "HYBRID",
+      "question": "Was the July 2023 Kullu disaster associated with extreme rainfall?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 99.65,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_HPSDMA_PDNA_2023",
+        "SRC_IMD_GRIDDED_025",
+        "SRC_IMD_SHIMLA_DISTRICT_MONSOON"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_02",
+      "track": "HYBRID",
+      "question": "What information is currently available for 2026?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 87.76,
+      "status": "OK",
+      "intent": "PARTIAL_YEAR_STATUS",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 1,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_IMD_SHIMLA_DISTRICT_MONSOON",
+        "SRC_IMD_SHIMLA_TELEMETRY_2026"
+      ],
+      "warnings": [
+        "2026 data is PARTIAL. Telemetry reflects recent AWS observations."
+      ],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_03",
+      "track": "HYBRID",
+      "question": "What were the total casualties reported from the June 2013 Kullu flash flood disaster and what was the precipitation?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 105.46,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_HISTORICAL_LOSS_2007_2015",
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_04",
+      "track": "HYBRID",
+      "question": "Was the July 2021 Dharamshala flood disaster associated with heavy precipitation?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 88.44,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_HPSDMA_PDNA_2023",
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_05",
+      "track": "HYBRID",
+      "question": "Did extreme rainfall trigger the severe August 2017 landslides and flash floods in Mandi?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 81.76,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_GSI_WADIA_EVENT_STUDIES",
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_06",
+      "track": "HYBRID",
+      "question": "Was the September 2018 deluge in Kullu accompanied by catastrophic river swelling?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 80.62,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_07",
+      "track": "HYBRID",
+      "question": "How did intense rainfall contribute to the August 2023 disaster impact across Mandi?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 80.13,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_HPSDMA_PDNA_2023",
+        "SRC_IMD_GRIDDED_025",
+        "SRC_IMD_SHIMLA_DISTRICT_MONSOON"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_08",
+      "track": "HYBRID",
+      "question": "Was extreme rain associated with the July 2023 flood devastation in Shimla district?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 81.89,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_HPSDMA_PDNA_2023",
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_09",
+      "track": "HYBRID",
+      "question": "What rainfall levels and damage were recorded during the August 2023 Kangra flood events?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 84.96,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_HPSDMA_PDNA_2023",
+        "SRC_IMD_GRIDDED_025",
+        "SRC_IMD_SHIMLA_DISTRICT_MONSOON"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_HYB_10",
+      "track": "HYBRID",
+      "question": "Did excessive rainfall in July 2022 correlate with flash floods in Kullu valley?",
+      "expected_route": "HYBRID",
+      "actual_route": "HYBRID",
+      "route_match": true,
+      "latency_ms": 85.56,
+      "status": "OK",
+      "intent": "HAZARD_RAINFALL_CORRELATION",
+      "routing_confidence": 0.95,
+      "structured_evidence_count": 2,
+      "document_evidence_count": 5,
+      "sources": [
+        "SRC_HPSDMA_LOSS_MEMORANDUMS",
+        "SRC_IMD_GRIDDED_025"
+      ],
+      "warnings": [],
+      "hybrid_structured_branch_correct": true,
+      "hybrid_document_branch_correct": true,
+      "hybrid_fusion_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_01",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the maximum rainfall in Pune in 2023?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.39,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_SCOPE_GEOGRAPHY_PUNE",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Location 'Pune' is outside the 4 authorized target districts (Kangra, Mandi, Shimla, Kullu)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_02",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the rainfall in Delhi in August 2023?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.31,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_SCOPE_GEOGRAPHY_DELHI",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Location 'Delhi' is outside the 4 authorized target districts (Kangra, Mandi, Shimla, Kullu)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_03",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the rainfall in Jaipur district in July 2022?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.43,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_SCOPE_GEOGRAPHY_JAIPUR",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Location 'Jaipur' is outside the 4 authorized target districts (Kangra, Mandi, Shimla, Kullu)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_04",
+      "track": "NEGATIVE_REJECTED",
+      "question": "How many cloudburst events occurred in Mumbai in 2023?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.44,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_SCOPE_GEOGRAPHY_MUMBAI",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Location 'Mumbai' is outside the 4 authorized target districts (Kangra, Mandi, Shimla, Kullu)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_05",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the total rainfall in Bilaspur district in 2022?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.4,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_SCOPE_GEOGRAPHY_BILASPUR",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Location 'Bilaspur' is outside the 4 authorized target districts (Kangra, Mandi, Shimla, Kullu)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_06",
+      "track": "NEGATIVE_REJECTED",
+      "question": "How many flash floods occurred in Solan in 2023?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.34,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_SCOPE_GEOGRAPHY_SOLAN",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Location 'Solan' is outside the 4 authorized target districts (Kangra, Mandi, Shimla, Kullu)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_07",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the peak rainfall in Atlantis in 2023?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.42,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_SCOPE_GEOGRAPHY_ATLANTIS",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Location 'Atlantis' is outside the 4 authorized target districts (Kangra, Mandi, Shimla, Kullu)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_08",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the wind speed in Shimla on 2023-07-09?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.04,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "UNSUPPORTED_PARAMETER_WIND_SPEED",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Requested parameter 'Wind Speed' is outside the authorized project schema (Rainfall, Cloudburst, Flash Flood)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_09",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the solar radiation in Kangra in July 2023?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.05,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "UNSUPPORTED_PARAMETER_SOLAR_RADIATION",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Requested parameter 'Solar Radiation' is outside the authorized project schema (Rainfall, Cloudburst, Flash Flood)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_10",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the maximum temperature recorded in Mandi in 2023?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.04,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "UNSUPPORTED_PARAMETER_TEMPERATURE",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Requested parameter 'Temperature' is outside the authorized project schema (Rainfall, Cloudburst, Flash Flood)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_11",
+      "track": "NEGATIVE_REJECTED",
+      "question": "How many avalanche accidents occurred in Kullu in 2022?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.12,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "UNSUPPORTED_PARAMETER_AVALANCHE",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Requested parameter 'Avalanche' is outside the authorized project schema (Rainfall, Cloudburst, Flash Flood)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_12",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the Richter scale earthquake reading in Kangra on 2023-07-09?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.1,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "UNSUPPORTED_PARAMETER_EARTHQUAKE",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Requested parameter 'Earthquake' is outside the authorized project schema (Rainfall, Cloudburst, Flash Flood)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_13",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What was the snowfall depth in Manali in January 2023?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.19,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "UNSUPPORTED_PARAMETER_SNOWFALL",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Requested parameter 'Snowfall' is outside the authorized project schema (Rainfall, Cloudburst, Flash Flood)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_14",
+      "track": "NEGATIVE_REJECTED",
+      "question": "Describe the catastrophic tsunami that struck Mandi in August 2023.",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.12,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "UNSUPPORTED_PARAMETER_TSUNAMI",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Requested parameter 'Tsunami' is outside the authorized project schema (Rainfall, Cloudburst, Flash Flood)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_15",
+      "track": "NEGATIVE_REJECTED",
+      "question": "How many flash floods occurred in Kullu in 2027?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.14,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_TEMPORAL_BOUNDS",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Query year is outside the authorized temporal bounds (2011-2026)."
+      ],
+      "negative_query_correct": true
+    },
+    {
+      "question_id": "GQ_NEG_16",
+      "track": "NEGATIVE_REJECTED",
+      "question": "What does the 1995 Bilaspur district flood report say about dam overflow?",
+      "expected_route": "NEGATIVE_REJECTED",
+      "actual_route": "NEGATIVE_REJECTED",
+      "route_match": true,
+      "latency_ms": 0.48,
+      "status": "NO_SUPPORTED_EVIDENCE",
+      "intent": "OUT_OF_SCOPE_GEOGRAPHY_BILASPUR",
+      "routing_confidence": 1.0,
+      "structured_evidence_count": 0,
+      "document_evidence_count": 0,
+      "sources": [],
+      "warnings": [
+        "No supported evidence. Location 'Bilaspur' is outside the 4 authorized target districts (Kangra, Mandi, Shimla, Kullu)."
+      ],
+      "negative_query_correct": true
+    }
+  ]
+}

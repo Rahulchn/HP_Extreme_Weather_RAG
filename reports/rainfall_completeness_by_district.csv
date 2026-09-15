@@ -1,0 +1,5 @@
+district,total_district_daily_records,valid_aggregated_days,missing_aggregated_days,completeness_percentage,cells_aggregated,status
+Kangra,5479,5479,0,100.00%,28,VALIDATED
+Mandi,5479,5479,0,100.00%,20,VALIDATED
+Shimla,5479,5479,0,100.00%,15,VALIDATED
+Kullu,5479,5479,0,100.00%,16,VALIDATED

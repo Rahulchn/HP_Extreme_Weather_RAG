@@ -1,0 +1,41 @@
+event_id,canonical_event_id,date,district,event_type,location,source_count,source_organizations,possible_duplicate,classification_confidence,merge_reason
+CB_2011_SHIMLA_001,CANON_20110811_SHI_RAM,2011-08-11,Shimla,Cloudburst,Rampur - Nankhari,1,HP SDMA / TARU,NO,HIGH,Unique documented event
+CB_2014_KULLU_001,CANON_20140814_KUL_KUL,2014-08-14,Kullu,Cloudburst,Kullu - Lug Valley,1,HP SDMA / TARU,NO,HIGH,Unique documented event
+CB_2016_MANDI_001,CANON_20160812_MAN_PAD,2016-08-12,Mandi,Cloudburst,Padhar - Padhar & Jogindernagar nullahs,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2016_KULLU_001,CANON_20160703_KUL_BAN,2016-07-03,Kullu,Cloudburst,Banjar - Hamni Village (Tirthan Valley),1,HP SDMA,NO,HIGH,Unique documented event
+CB_2016_SHIMLA_001,CANON_20160812_SHI_SUN,2016-08-12,Shimla,Cloudburst,Sunni - Sunni & Rampur periphery,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2017_MANDI_001,CANON_20170812_MAN_PAD,2017-08-12,Mandi,Cloudburst,Padhar - Kotrupi (NH-154),1,HP SDMA / GSI,NO,HIGH,Unique documented event
+CB_2018_KULLU_001,CANON_20180923_KUL_MAN,2018-09-23,Kullu,Cloudburst,Manali - Palchan and Solang Valley,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2019_SHIMLA_001,CANON_20190818_SHI_ROH,2019-08-18,Shimla,Cloudburst,Rohru - Tikker and Chirgaon,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2020_KULLU_001,CANON_20200810_KUL_ANN,2020-08-10,Kullu,Cloudburst,Anni - Pani Nullah,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2021_KANGRA_001,CANON_20210712_KAN_DHA,2021-07-12,Kangra,Cloudburst and Flash Flood,Dharamshala - Bhagsunag and Boh Village,2,HP SDMA; Geological Survey of India (GSI),YES (Merged into Canonical),HIGH,Identical disaster co-occurring on 2021-07-12 in Dharamshala/Boh (Kangra); SDMA cloudburst memo and GSI flash flood report describe the same event.
+CB_2021_SHIMLA_001,CANON_20210728_SHI_RAM,2021-07-28,Shimla,Cloudburst,Rampur - Sarpara Village,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2022_KULLU_001,CANON_20220706_KUL_MAN,2022-07-06,Kullu,Cloudburst,Manikaran - Chojh Village,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2022_MANDI_001,CANON_20220819_MAN_GOH,2022-08-19,Mandi,Cloudburst,Gohar - Kashan Village,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2023_KULLU_001,CANON_20230709_KUL_BHU,2023-07-09,Kullu,Cloudburst,Bhuntar - Gadsa Valley and Chojh nullah,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2023_MANDI_001,CANON_20230709_MAN_THU,2023-07-09,Mandi,Cloudburst,Thunag - Thunag Market and Jhanjheli,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2023_SHIMLA_001,CANON_20230814_SHI_SHI,2023-08-14,Shimla,Cloudburst,Shimla Urban - Summer Hill (Shiv Bawadi) and Fagli,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2023_KANGRA_001,CANON_20230814_KAN_JAW,2023-08-14,Kangra,Cloudburst,Jawali - Fatehpur and Pong Dam catchment,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2024_SHIMLA_001,CANON_20240731_SHI_RAM,2024-07-31,Shimla,Cloudburst,Rampur - Samej Village (near Jhakri),1,HP SDMA,NO,HIGH,Unique documented event
+CB_2024_KULLU_001,CANON_20240731_KUL_NIR,2024-07-31,Kullu,Cloudburst,Nirmand - Bagipul and Jaon Village,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2024_MANDI_001,CANON_20240731_MAN_PAD,2024-07-31,Mandi,Cloudburst,Padhar - Tikkan and Rajban Village,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2025_MANDI_001,CANON_20250801_MAN_GOH,2025-08-01,Mandi,Cloudburst,Gohar & Karsog - Karsog & Gohar catchment nullahs,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2025_KULLU_001,CANON_20250801_KUL_SAI,2025-08-01,Kullu,Cloudburst,Sainj - Sainj Valley nullahs,1,HP SDMA,NO,HIGH,Unique documented event
+CB_2025_SHIMLA_001,CANON_20250815_SHI_RAM,2025-08-15,Shimla,Cloudburst,Rampur - Rampur & Rohru border areas,1,HP SDMA,NO,HIGH,Unique documented event
+FF_2013_KULLU_001,CANON_20130616_KUL_KUL,2013-06-16,Kullu,Flash Flood,Beas River & Parbati River (Kullu / Manali),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2013_SHIMLA_001,CANON_20130616_SHI_RAM,2013-06-16,Shimla,Flash Flood,Sutlej River & Pabbar River (Rampur / Chirgaon),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2013_MANDI_001,CANON_20130616_MAN_SAD,2013-06-16,Mandi,Flash Flood,Beas River & Suketi Khad (Sadar Mandi),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2013_KANGRA_001,CANON_20130616_KAN_PAL,2013-06-16,Kangra,Flash Flood,Chakki River & Neugal Khad (Palampur / Nurpur),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2014_MANDI_001,CANON_20140608_MAN_THA,2014-06-08,Mandi,Flash Flood,Beas River (Larji Dam reach) (Thalout),1,HP SDMA / TARU,NO,HIGH,Unique documented event
+FF_2016_KANGRA_001,CANON_20160812_KAN_DHA,2016-08-12,Kangra,Flash Flood,Manjhi Khad & Chakki Khad (Dharamshala / Nurpur),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2018_KULLU_001,CANON_20180924_KUL_KUL,2018-09-24,Kullu,Flash Flood,Beas River (Kullu and Manali),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2019_SHIMLA_001,CANON_20190818_SHI_CHI,2019-08-18,Shimla,Flash Flood,Pabbar River and Andhra Khad (Chirgaon),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2021_KANGRA_001,CANON_20210712_KAN_DHA,2021-07-12,Kangra,Cloudburst and Flash Flood,Manjhi Khad and Gaj Khad (Dharamshala and Shahpur),2,HP SDMA; Geological Survey of India (GSI),YES (Merged into Canonical),HIGH,Identical disaster co-occurring on 2021-07-12 in Dharamshala/Boh (Kangra); merged with CB_2021_KANGRA_001.
+FF_2021_KULLU_001,CANON_20210728_KUL_MAN,2021-07-28,Kullu,Flash Flood,Brahma Ganga nullah (Parbati basin) (Manikaran),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2022_MANDI_001,CANON_20220820_MAN_BAL,2022-08-20,Mandi,Flash Flood,Suketi Khad and Baggi canal (Balh),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2022_KANGRA_001,CANON_20220820_KAN_NUR,2022-08-20,Kangra,Flash Flood,Chakki River (Nurpur),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2023_KULLU_001,CANON_20230709_KUL_MAN,2023-07-09,Kullu,Flash Flood,Beas River and tributaries (Manali and Kullu),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2023_MANDI_001,CANON_20230709_MAN_SAD,2023-07-09,Mandi,Flash Flood,Beas River and Suketi Khad (Sadar Mandi),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2023_SHIMLA_001,CANON_20230710_SHI_SHI,2023-07-10,Shimla,Flash Flood,Ashwani Khad and Giri River (Shimla Rural),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2023_KANGRA_001,CANON_20230814_KAN_NUR,2023-08-14,Kangra,Flash Flood,Chakki Khad and Pong Reservoir basin (Nurpur and Indora),1,HP SDMA,NO,HIGH,Unique documented event
+FF_2025_MANDI_001,CANON_20250802_MAN_BAL,2025-08-02,Mandi,Flash Flood,Suketi Khad & Beas River tributaries (Balh & Sadar Mandi),1,HP SDMA,NO,HIGH,Unique documented event

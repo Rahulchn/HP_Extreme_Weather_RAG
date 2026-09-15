@@ -1,0 +1,5 @@
+source_type,records,valid,nodata,valid_percentage,coverage
+IMD_GRIDDED_SPATIAL_DATA,328740,328740,0,100.00%,2011–2025 (Daily 0.25 deg matrix across 88 HP cells)
+IMD_GRIDDED_SPATIAL_DATA_DISTRICT_AGGREGATION,21916,21916,0,100.00%,"2011–2025 (Daily district spatial aggregates: Kangra, Mandi, Shimla, Kullu)"
+IMD_STATION_OR_DISTRICT_OBSERVATION,25,25,0,100.00%,"2011, 2014, 2017, 2018, 2021, 2023, 2026 (Official ground truth)"
+IMD_TELEMETRY,4,4,0,100.00%,2026 (3-Hourly AWS station telemetry bulletins)

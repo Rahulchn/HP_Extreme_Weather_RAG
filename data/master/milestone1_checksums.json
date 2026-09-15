@@ -1,0 +1,10 @@
+{
+  "data/processed/rainfall/imd_gridded_daily_rainfall.csv": "d64617b1cc52642dcdefad3b5f043aaa5d60388dde34346a710c5fbc1317cc42",
+  "data/processed/rainfall/district_daily_rainfall.csv": "2bfc4eb1e300cdd49ac8eedd19972da684abd575a1ffe236e27869b9fe5c8211",
+  "data/processed/rainfall/station_district_rainfall.csv": "d45a98becd585682d340174e3ca769da1a9708183d9605be9adba3785715e930",
+  "data/processed/rainfall/telemetry_rainfall.csv": "4b6c041828c97d08d71f9579cbd7c61aadf3818f341a00f71a26ce75260536f1",
+  "data/processed/cloudburst/cloudburst_events.csv": "e5bc65e744e31851326df9f5ee7e8bf4fb45a37ac99e958700107f3ddb447543",
+  "data/processed/flash_flood/flash_flood_events.csv": "e6e5200fd952b66cfab63f3a2a5b0ed0776dad5d239e3dce24536b893404048b",
+  "data/processed/combined/extreme_weather_events.csv": "17e514aeb457f205c063177c66f33bc52647c813aee2106f68577b9e1fc3dbc3",
+  "reports/source_registry.csv": "4ee9b464a5f758b4a311fad5f9b3b5f4266611321f120fd610b00097585dc0be"
+}

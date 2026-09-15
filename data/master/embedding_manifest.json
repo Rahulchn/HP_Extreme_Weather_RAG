@@ -1,0 +1,20 @@
+{
+  "embedding_model": "BAAI/bge-base-en-v1.5",
+  "model_version": "1.5",
+  "embedding_dimension": 768,
+  "similarity_metric": "cosine",
+  "normalized": true,
+  "chunk_count": 812,
+  "embedded_count": 812,
+  "failed_count": 0,
+  "vector_store_type": "FAISS_IndexFlatIP_with_metadata_sidecar",
+  "build_timestamp": "2026-09-07T15:15:26.395081Z",
+  "build_duration_seconds": 18.43,
+  "index_file": "data/knowledge_base/vector_store\\index.faiss",
+  "index_size_bytes": 2494509,
+  "index_sha256": "60e510e488e86bd80f695155ff009130e2f7256e201626286f97d4afcbf3c3be",
+  "metadata_file": "data/knowledge_base/vector_store\\index_meta.json",
+  "metadata_size_bytes": 1937627,
+  "metadata_sha256": "bb03e48e16324609ad6a17da6bea71e9bbc71c97513602526e863de9402ecdfe",
+  "failed_chunks": []
+}

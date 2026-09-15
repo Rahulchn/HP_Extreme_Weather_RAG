@@ -1,0 +1,26 @@
+document_id,source_id,title,year,authority_level,authority_rank,file_path,total_pages,processed_pages,chunks_count
+DOC_HPSDMA_PDNA_2023,SRC_HPSDMA_PDNA_2023,Post Disaster Needs Assessment (PDNA) Monsoon 2023,2023,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_pdna_monsoon_2023.pdf,202,202,228
+DOC_HPSDMA_10YR_LOSSES,SRC_HPSDMA_10YR_LOSSES_2016_2025,10-Year Cumulative Disaster Losses in Himachal Pradesh (2016-2025),2025,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_10year_losses_2016_2025.pdf,1,1,2
+DOC_HPSDMA_LR3_2007_2015,SRC_HPSDMA_HISTORICAL_LOSS_2007_2015,Disaster Analysis and Management (LR3 2007-2015) Hazard Study,2015,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_disaster_analysis_lr3_2007_2015.pdf,134,134,135
+DOC_GSI_BOH_2021,SRC_GSI_WADIA_EVENT_STUDIES,GSI Scientific Investigation of Boh-Dharamshala Flash Flood and Debris Flow 2021,2021,SCIENTIFIC_LITERATURE,2,data/raw/flash_flood/gsi_boh_kangra_investigation.pdf,6,6,6
+DOC_GSI_KOTRUPI_2017,SRC_GSI_WADIA_EVENT_STUDIES,GSI Geotechnical & Hydrometeorological Study of Kotrupi Mandi Disaster 2017,2017,SCIENTIFIC_LITERATURE,2,data/raw/flash_flood/gsi_kotrupi_mandi_investigation.pdf,29,29,31
+DOC_IMD_MONSOON_REPORT_2023,SRC_IMD_SHIMLA_DISTRICT_MONSOON,IMD MC Shimla Southwest Monsoon 2023 End of Season Report,2023,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_shimla_monsoon_report_2023.pdf,13,13,11
+DOC_IMD_MONTHLY_RAIN_2023,SRC_IMD_SHIMLA_DISTRICT_MONSOON,IMD MC Shimla Monthly Rainfall & Departure Statement 2023,2023,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_shimla_rainfallmonthly_2023.pdf,6,6,6
+DOC_IMD_YEARLY_MONSOON_2004_2025,SRC_IMD_SHIMLA_DISTRICT_MONSOON,IMD MC Shimla Long-Term Monsoon Rainfall Statistics (2004-2025),2025,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_shimla_yearlymonsoon_2004_2025.pdf,1,1,1
+DOC_IMD_CLI_KANGRA,SRC_IMD_SHIMLA_DISTRICT_MONSOON,IMD Climatological Profile and Historical Extremes: Kangra District,2020,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_climatology_kangra.pdf,1,1,1
+DOC_IMD_CLI_KULLU,SRC_IMD_SHIMLA_DISTRICT_MONSOON,IMD Climatological Profile and Historical Extremes: Kullu District,2020,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_climatology_kullu.pdf,1,1,1
+DOC_IMD_CLI_MANDI,SRC_IMD_SHIMLA_DISTRICT_MONSOON,IMD Climatological Profile and Historical Extremes: Mandi District,2020,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_climatology_mandi.pdf,1,1,1
+DOC_IMD_CLI_SHIMLA,SRC_IMD_SHIMLA_DISTRICT_MONSOON,IMD Climatological Profile and Historical Extremes: Shimla District,2020,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_climatology_shimla.pdf,1,1,1
+DOC_IMD_TELEMETRY_2026,SRC_IMD_SHIMLA_TELEMETRY_2026,IMD MC Shimla Real-Time AWS Telemetry Report (September 2026),2026,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_shimla_three_hourly_telemetry_2026.pdf,1,1,1
+DOC_IMD_CHIEF_RAIN_2026,SRC_IMD_SHIMLA_TELEMETRY_2026,IMD MC Shimla Chief Daily Rainfall Amounts Bulletin (September 2026),2026,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_shimla_chief_rainfall_2026.pdf,2,2,2
+DOC_IMD_DAILY_BULLETIN_2026,SRC_IMD_SHIMLA_TELEMETRY_2026,IMD MC Shimla Daily Weather Bulletin (September 2026),2026,GOVERNMENT_OFFICIAL,1,data/raw/rainfall/imd_shimla_daily_bulletin_2026.pdf,1,1,1
+DOC_HPSDMA_MEMO_2016,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2016,2016,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2016.pdf,72,40,40
+DOC_HPSDMA_MEMO_2017,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2017,2017,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2017.pdf,79,40,43
+DOC_HPSDMA_MEMO_2018,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2018,2018,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2018.pdf,100,40,43
+DOC_HPSDMA_MEMO_2019,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2019,2019,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2019.pdf,170,40,41
+DOC_HPSDMA_MEMO_2020,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2020,2020,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2020.pdf,136,40,40
+DOC_HPSDMA_MEMO_2021,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2021,2021,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2021.pdf,657,40,1
+DOC_HPSDMA_MEMO_2022,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2022,2022,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2022.pdf,132,40,41
+DOC_HPSDMA_MEMO_2023,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2023,2023,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2023.pdf,191,40,45
+DOC_HPSDMA_MEMO_2024,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2024,2024,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2024.pdf,149,40,41
+DOC_HPSDMA_MEMO_2025,SRC_HPSDMA_LOSS_MEMORANDUMS,HP SDMA State Memorandum of Loss and Damage Monsoon 2025,2025,GOVERNMENT_OFFICIAL,1,data/raw/disaster_reports/hpsdma_memo_monsoon_2025.pdf,301,40,49

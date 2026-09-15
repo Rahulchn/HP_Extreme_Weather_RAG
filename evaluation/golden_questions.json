@@ -1,0 +1,767 @@
+[
+  {
+    "question_id": "GQ_STR_01",
+    "question": "What was the maximum rainfall in Kangra in 2023?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "MAX_RAINFALL",
+    "target_district": "Kangra",
+    "target_year": 2023,
+    "target_parameter": "Rainfall",
+    "expected_function": "get_max_rainfall",
+    "expected_result_type": "CALCULATED",
+    "expected_source_id": "SRC_IMD_GRIDDED_025",
+    "expected_status": "OK",
+    "expected_value_threshold": 240.0
+  },
+  {
+    "question_id": "GQ_STR_02",
+    "question": "How many documented flash floods occurred in Kullu between 2011 and 2025?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "EVENT_COUNT",
+    "target_district": "Kullu",
+    "target_start_year": 2011,
+    "target_end_year": 2025,
+    "target_event_type": "Flash Flood",
+    "expected_function": "get_events_by_type",
+    "expected_result_type": "CALCULATED",
+    "expected_source_id": "SRC_HPSDMA_LOSS_MEMORANDUMS",
+    "expected_status": "OK",
+    "expected_count": 4
+  },
+  {
+    "question_id": "GQ_STR_03",
+    "question": "Which district had the most documented cloudburst events?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "STATISTICAL_COMPARISON",
+    "target_event_type": "Cloudburst",
+    "expected_function": "get_cloudburst_summary",
+    "expected_result_type": "CALCULATED",
+    "expected_source_id": "SRC_HPSDMA_LOSS_MEMORANDUMS",
+    "expected_status": "OK",
+    "expected_top_district": "Kullu"
+  },
+  {
+    "question_id": "GQ_STR_04",
+    "question": "What was the rainfall in Shimla on 2023-07-09?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "DATE_RAINFALL",
+    "target_district": "Shimla",
+    "target_date": "2023-07-09",
+    "target_parameter": "Rainfall",
+    "expected_function": "get_rainfall_by_date",
+    "expected_result_type": "OBSERVED",
+    "expected_source_id": "SRC_IMD_GRIDDED_025",
+    "expected_status": "OK"
+  },
+  {
+    "question_id": "GQ_STR_05",
+    "question": "What was the average annual rainfall in Mandi between 2011 and 2025?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "AVERAGE_RAINFALL",
+    "target_district": "Mandi",
+    "target_start_year": 2011,
+    "target_end_year": 2025,
+    "expected_function": "get_rainfall_statistics",
+    "expected_result_type": "CALCULATED",
+    "expected_source_id": "SRC_IMD_GRIDDED_025",
+    "expected_status": "OK"
+  },
+  {
+    "question_id": "GQ_STR_06",
+    "question": "List documented cloudburst events in Mandi district in 2023.",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "EVENT_LOOKUP",
+    "target_district": "Mandi",
+    "target_year": 2023,
+    "target_event_type": "Cloudburst",
+    "expected_function": "get_events_by_year",
+    "expected_result_type": "OBSERVED",
+    "expected_source_id": "SRC_HPSDMA_LOSS_MEMORANDUMS",
+    "expected_status": "OK"
+  },
+  {
+    "question_id": "GQ_STR_07",
+    "question": "What was the annual rainfall in Kangra in 2026?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "ANNUAL_TOTAL_INCOMPLETE",
+    "target_district": "Kangra",
+    "target_year": 2026,
+    "expected_function": "get_rainfall_statistics",
+    "expected_status": "INSUFFICIENT_FOR_FULL_YEAR"
+  },
+  {
+    "question_id": "GQ_STR_08",
+    "question": "How many cloudburst events were documented in Kangra in 2016?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "EVENT_COUNT",
+    "target_district": "Kangra",
+    "target_year": 2016,
+    "target_event_type": "Cloudburst",
+    "expected_function": "get_events_by_year",
+    "expected_status": "ZERO_DOCUMENTED_EVENTS"
+  },
+  {
+    "question_id": "GQ_STR_09",
+    "question": "Was zero rainfall recorded anywhere in Kangra on 2011-01-02?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "DATE_RAINFALL",
+    "target_district": "Kangra",
+    "target_date": "2011-01-02",
+    "expected_function": "get_rainfall_by_date",
+    "expected_status": "ZERO_RAINFALL"
+  },
+  {
+    "question_id": "GQ_STR_10",
+    "question": "What was the highest single-day rainfall recorded in Kullu in August 2023?",
+    "track": "STRUCTURED",
+    "expected_route": "STRUCTURED",
+    "expected_intent": "MAX_RAINFALL_RANGE",
+    "target_district": "Kullu",
+    "target_year": 2023,
+    "target_date_range": "2023-08-01 to 2023-08-31",
+    "expected_function": "get_max_rainfall",
+    "expected_result_type": "CALCULATED",
+    "expected_source_id": "SRC_IMD_GRIDDED_025",
+    "expected_status": "OK"
+  },
+  {
+    "question_id": "GQ_DOC_01",
+    "question": "What happened during the Boh village disaster in July 2021 according to the GSI study?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "EVENT_NARRATIVE",
+    "target_district": "Kangra",
+    "target_year": 2021,
+    "expected_document_ids": [
+      "DOC_GSI_BOH_2021"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_GSI_BOH_2021_P001_01",
+      "CHK_DOC_GSI_BOH_2021_P002_01"
+    ],
+    "relevance_description": "GSI report on Boh catastrophic landslide on 12.07.2021 causing 10 fatalities and washing away houses."
+  },
+  {
+    "question_id": "GQ_DOC_02",
+    "question": "What geotechnical ground stabilisation and drainage measures did GSI recommend for Boh village?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "EVENT_NARRATIVE",
+    "target_district": "Kangra",
+    "target_year": 2021,
+    "expected_document_ids": [
+      "DOC_GSI_BOH_2021"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_GSI_BOH_2021_P003_01"
+    ],
+    "relevance_description": "Reclamation of land mass after compaction, channeling seepage, and provisions of drainage outlet."
+  },
+  {
+    "question_id": "GQ_DOC_03",
+    "question": "What geological factors and rock mass conditions triggered the 2017 Kotrupi rockslide according to GSI?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "LANDSLIDE_IMPACT_NARRATIVE",
+    "target_district": "Mandi",
+    "target_year": 2017,
+    "expected_document_ids": [
+      "DOC_GSI_KOTRUPI_2017"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_GSI_KOTRUPI_2017_P007_01",
+      "CHK_DOC_GSI_KOTRUPI_2017_P009_01",
+      "CHK_DOC_GSI_KOTRUPI_2017_P015_01"
+    ],
+    "relevance_description": "Topography, rugged ridges, weathering and accumulation of in-situ soil capping, crushed rock mass under thrust."
+  },
+  {
+    "question_id": "GQ_DOC_04",
+    "question": "How did antecedent rainfall and precipitation patterns act as a trigger mechanism for the Kotrupi landslide?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "LANDSLIDE_IMPACT_NARRATIVE",
+    "target_district": "Mandi",
+    "target_year": 2017,
+    "expected_document_ids": [
+      "DOC_GSI_KOTRUPI_2017"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_GSI_KOTRUPI_2017_P015_01",
+      "CHK_DOC_GSI_KOTRUPI_2017_P016_01",
+      "CHK_DOC_GSI_KOTRUPI_2017_P026_02"
+    ],
+    "relevance_description": "Monthly rainfall in July and August 2017 (July 467.8mm, Aug 430.7mm) triggering sudden slope saturation and failure."
+  },
+  {
+    "question_id": "GQ_DOC_05",
+    "question": "What does the PDNA report indicate about total damage and losses to the road transport sector in 2023?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "LANDSLIDE_IMPACT_NARRATIVE",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P106_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P110_01",
+      "CHK_DOC_HPSDMA_PDNA_2023_P116_01"
+    ],
+    "relevance_description": "Road sector damage totaling INR 1506 Crs affecting 21% of road length, with loss distribution across 6 districts."
+  },
+  {
+    "question_id": "GQ_DOC_06",
+    "question": "What does the 2023 PDNA report about power sector damage, transmission poles, and HPSEBL infrastructure?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "LANDSLIDE_IMPACT_NARRATIVE",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P148_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P157_01",
+      "CHK_DOC_HPSDMA_PDNA_2023_P158_01",
+      "CHK_DOC_HPSDMA_PDNA_2023_P159_02"
+    ],
+    "relevance_description": "Damage to generation, transmission and distribution, uprooted structures, deformed poles, and cascading power impact."
+  },
+  {
+    "question_id": "GQ_DOC_07",
+    "question": "What does the PDNA indicate regarding flood damage to water supply schemes and water treatment plants?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "LANDSLIDE_IMPACT_NARRATIVE",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P126_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P127_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P131_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P136_02"
+    ],
+    "relevance_description": "5329 operational schemes affected, groundwater systems impaired, 490 water treatment plants damaged."
+  },
+  {
+    "question_id": "GQ_DOC_08",
+    "question": "What were the agricultural crop losses and damage to allied sectors reported in the 2023 PDNA?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "LANDSLIDE_IMPACT_NARRATIVE",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P170_01",
+      "CHK_DOC_HPSDMA_PDNA_2023_P171_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P173_01"
+    ],
+    "relevance_description": "Crop losses in cereals, vegetables, pulses, oilseeds, and fishery/allied sector recovery assistance needs."
+  },
+  {
+    "question_id": "GQ_DOC_09",
+    "question": "What overall recovery and reconstruction principles does the PDNA recommend for building back better?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "EVENT_NARRATIVE",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P010_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P036_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P084_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P121_02"
+    ],
+    "relevance_description": "Build back better implementation strategy, long-term recovery planning, retrofitting partially damaged houses."
+  },
+  {
+    "question_id": "GQ_DOC_10",
+    "question": "What does the PDNA report about damage and loss to houses and human settlements across the affected districts?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "EVENT_NARRATIVE",
+    "target_district": "Mandi",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P033_02",
+      "CHK_DOC_HPSDMA_PDNA_2023_P034_01",
+      "CHK_DOC_HPSDMA_PDNA_2023_P048_01"
+    ],
+    "relevance_description": "Overall summary of damage and loss assessment across social and housing sectors, pucca and kutcha house destruction."
+  },
+  {
+    "question_id": "GQ_DOC_11",
+    "question": "What emergency search, rescue, and evacuation operations were conducted by NDRF and SDRF during the 2023 monsoon?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "LANDSLIDE_IMPACT_NARRATIVE",
+    "target_district": "Mandi",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_MEMO_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_MEMO_2023_P025_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P028_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P029_01"
+    ],
+    "relevance_description": "NDRF, SDRF, and army rescue operations evacuating stranded tourists and local residents, review meetings post-disaster."
+  },
+  {
+    "question_id": "GQ_DOC_12",
+    "question": "What devastation occurred in Kullu district and Sainj valley due to flash floods according to the 2023 memorandum?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "EVENT_NARRATIVE",
+    "target_year": 2025,
+    "expected_document_ids": [
+      "DOC_HPSDMA_MEMO_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_MEMO_2023_P016_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P017_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P018_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P019_02"
+    ],
+    "relevance_description": "Unprecedented flooding in Sainj market washing away 60 buildings/shops, Anni bus stand multi-storey buildings collapse."
+  },
+  {
+    "question_id": "GQ_DOC_13",
+    "question": "What does the SEOC 10-year loss summary report record for human lives lost in Himachal Pradesh from 2016 to 2025?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "EVENT_NARRATIVE",
+    "expected_document_ids": [
+      "DOC_HPSDMA_10YR_LOSSES"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_10YR_LOSSES_P001_01",
+      "CHK_DOC_HPSDMA_10YR_LOSSES_P001_02"
+    ],
+    "relevance_description": "State Emergency Operations Centre 10 Years Loss (2016-2025) table documenting loss of human lives and financial losses."
+  },
+  {
+    "question_id": "GQ_DOC_14",
+    "question": "How does the HPSDMA hazard vulnerability assessment classify disaster proneness and landslide hazards across districts?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "EVENT_NARRATIVE",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_LR3_2007_2015"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_LR3_2007_2015_P025_01",
+      "CHK_DOC_HPSDMA_LR3_2007_2015_P026_01",
+      "CHK_DOC_HPSDMA_LR3_2007_2015_P030_01"
+    ],
+    "relevance_description": "District-wise disaster vulnerability, high and moderate proneness, landslide occurrences across hills and mountains."
+  },
+  {
+    "question_id": "GQ_DOC_15",
+    "question": "What monthly rainfall totals and percentage departures from normal were recorded across HP in the 2023 monsoon report?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "LANDSLIDE_IMPACT_NARRATIVE",
+    "target_district": "Mandi",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_IMD_MONSOON_REPORT_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_IMD_MONSOON_REPORT_2023_P002_01",
+      "CHK_DOC_IMD_MONSOON_REPORT_2023_P003_01"
+    ],
+    "relevance_description": "IMD Shimla monthly rainfall table: June 120.7mm (+19%), July 448.1mm (+75%), August 246.4mm (-4%), Season 884.8mm (+20%)."
+  },
+  {
+    "question_id": "GQ_DOC_16",
+    "question": "Which meteorological stations recorded extremely heavy rainfall exceeding 200 mm in July 2023 according to IMD Shimla?",
+    "track": "DOCUMENT",
+    "expected_route": "DOCUMENT",
+    "expected_intent": "EVENT_NARRATIVE",
+    "target_district": "Kangra",
+    "target_year": 2021,
+    "expected_document_ids": [
+      "DOC_IMD_MONSOON_REPORT_2023"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_IMD_MONSOON_REPORT_2023_P005_01"
+    ],
+    "relevance_description": "Extremely heavy rainfall stations table on 09-07-2023 and 10-07-2023 (Una Rampur AWS 228.5mm, RL BBMB 224.0mm, Pachhad 220.3mm, Nahan 250.5mm)."
+  },
+  {
+    "question_id": "GQ_HYB_01",
+    "question": "Was the July 2023 Kullu disaster associated with extreme rainfall?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Kullu",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023",
+      "DOC_HPSDMA_MEMO_2023"
+    ],
+    "expected_source_ids": [
+      "SRC_HPSDMA_PDNA_2023",
+      "SRC_IMD_GRIDDED_025"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P002_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P012_01"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_02",
+    "question": "What information is currently available for 2026?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "PARTIAL_YEAR_STATUS",
+    "target_year": 2026,
+    "expected_document_ids": [
+      "DOC_IMD_TELEMETRY_2026",
+      "DOC_IMD_CHIEF_RAIN_2026"
+    ],
+    "expected_source_ids": [
+      "SRC_IMD_SHIMLA_TELEMETRY_2026"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_IMD_TELEMETRY_2026_P001_01",
+      "CHK_DOC_IMD_CHIEF_RAIN_2026_P001_01"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_03",
+    "question": "What were the total casualties reported from the June 2013 Kullu flash flood disaster and what was the precipitation?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Kullu",
+    "target_year": 2013,
+    "expected_document_ids": [
+      "DOC_HPSDMA_LR3_2007_2015"
+    ],
+    "expected_source_ids": [
+      "SRC_HPSDMA_LOSS_MEMORANDUMS",
+      "SRC_IMD_GRIDDED_025"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_LR3_2007_2015_P034_01",
+      "CHK_DOC_HPSDMA_LR3_2007_2015_P035_01"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_04",
+    "question": "Was the July 2021 Dharamshala flood disaster associated with heavy precipitation?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Kangra",
+    "target_year": 2021,
+    "expected_document_ids": [
+      "DOC_GSI_BOH_2021",
+      "DOC_HPSDMA_MEMO_2021",
+      "DOC_HPSDMA_MEMO_2023",
+      "DOC_HPSDMA_PDNA_2023"
+    ],
+    "expected_source_ids": [
+      "SRC_GSI_WADIA_EVENT_STUDIES",
+      "SRC_IMD_GRIDDED_025",
+      "SRC_HPSDMA_LOSS_MEMORANDUMS"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_GSI_BOH_2021_P001_01",
+      "CHK_DOC_GSI_BOH_2021_P002_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P032_01",
+      "CHK_DOC_HPSDMA_PDNA_2023_P022_02"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_05",
+    "question": "Did extreme rainfall trigger the severe August 2017 landslides and flash floods in Mandi?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Mandi",
+    "target_year": 2017,
+    "expected_document_ids": [
+      "DOC_GSI_KOTRUPI_2017",
+      "DOC_HPSDMA_MEMO_2017"
+    ],
+    "expected_source_ids": [
+      "SRC_GSI_WADIA_EVENT_STUDIES",
+      "SRC_IMD_GRIDDED_025"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_GSI_KOTRUPI_2017_P004_01",
+      "CHK_DOC_HPSDMA_MEMO_2017_P010_01"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_06",
+    "question": "Was the September 2018 deluge in Kullu accompanied by catastrophic river swelling?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Kullu",
+    "target_year": 2018,
+    "expected_document_ids": [
+      "DOC_HPSDMA_MEMO_2018"
+    ],
+    "expected_source_ids": [
+      "SRC_HPSDMA_LOSS_MEMORANDUMS",
+      "SRC_IMD_GRIDDED_025"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_MEMO_2018_P014_01",
+      "CHK_DOC_HPSDMA_MEMO_2018_P024_01"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_07",
+    "question": "How did intense rainfall contribute to the August 2023 disaster impact across Mandi?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Mandi",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023",
+      "DOC_HPSDMA_MEMO_2023"
+    ],
+    "expected_source_ids": [
+      "SRC_HPSDMA_PDNA_2023",
+      "SRC_IMD_GRIDDED_025"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P028_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P016_01"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_08",
+    "question": "Was extreme rain associated with the July 2023 flood devastation in Shimla district?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Shimla",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023",
+      "DOC_HPSDMA_MEMO_2023"
+    ],
+    "expected_source_ids": [
+      "SRC_HPSDMA_PDNA_2023",
+      "SRC_IMD_GRIDDED_025"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P030_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P019_01"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_09",
+    "question": "What rainfall levels and damage were recorded during the August 2023 Kangra flood events?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Kangra",
+    "target_year": 2023,
+    "expected_document_ids": [
+      "DOC_HPSDMA_PDNA_2023",
+      "DOC_HPSDMA_MEMO_2023"
+    ],
+    "expected_source_ids": [
+      "SRC_HPSDMA_PDNA_2023",
+      "SRC_IMD_GRIDDED_025"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_PDNA_2023_P019_01",
+      "CHK_DOC_HPSDMA_MEMO_2023_P015_01"
+    ]
+  },
+  {
+    "question_id": "GQ_HYB_10",
+    "question": "Did excessive rainfall in July 2022 correlate with flash floods in Kullu valley?",
+    "track": "HYBRID",
+    "expected_route": "HYBRID",
+    "expected_intent": "HAZARD_RAINFALL_CORRELATION",
+    "target_district": "Kullu",
+    "target_year": 2022,
+    "expected_document_ids": [
+      "DOC_HPSDMA_MEMO_2022"
+    ],
+    "expected_source_ids": [
+      "SRC_HPSDMA_LOSS_MEMORANDUMS",
+      "SRC_IMD_GRIDDED_025"
+    ],
+    "relevant_chunk_ids": [
+      "CHK_DOC_HPSDMA_MEMO_2022_P014_01",
+      "CHK_DOC_HPSDMA_MEMO_2022_P024_01"
+    ]
+  },
+  {
+    "question_id": "GQ_NEG_01",
+    "question": "What was the maximum rainfall in Pune in 2023?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_GEOGRAPHY",
+    "target_district": "Pune",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_02",
+    "question": "What was the rainfall in Delhi in August 2023?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_GEOGRAPHY",
+    "target_district": "Delhi",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_03",
+    "question": "What was the rainfall in Jaipur district in July 2022?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_GEOGRAPHY",
+    "target_district": "Jaipur",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_04",
+    "question": "How many cloudburst events occurred in Mumbai in 2023?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_GEOGRAPHY",
+    "target_district": "Mumbai",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_05",
+    "question": "What was the total rainfall in Bilaspur district in 2022?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_GEOGRAPHY",
+    "target_district": "Bilaspur",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_06",
+    "question": "How many flash floods occurred in Solan in 2023?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_GEOGRAPHY",
+    "target_district": "Solan",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_07",
+    "question": "What was the peak rainfall in Atlantis in 2023?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "INVENTED_GEOGRAPHY",
+    "target_district": "Atlantis",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_08",
+    "question": "What was the wind speed in Shimla on 2023-07-09?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_PARAMETER",
+    "target_parameter": "Wind Speed",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_09",
+    "question": "What was the solar radiation in Kangra in July 2023?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_PARAMETER",
+    "target_parameter": "Solar Radiation",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_10",
+    "question": "What was the maximum temperature recorded in Mandi in 2023?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_PARAMETER",
+    "target_parameter": "Temperature",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_11",
+    "question": "How many avalanche accidents occurred in Kullu in 2022?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_PARAMETER",
+    "target_parameter": "Avalanche",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_12",
+    "question": "What was the Richter scale earthquake reading in Kangra on 2023-07-09?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_PARAMETER",
+    "target_parameter": "Earthquake",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_13",
+    "question": "What was the snowfall depth in Manali in January 2023?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "UNSUPPORTED_PARAMETER",
+    "target_parameter": "Snowfall Depth",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_14",
+    "question": "Describe the catastrophic tsunami that struck Mandi in August 2023.",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "FICTIONAL_EVENT",
+    "target_event_type": "Tsunami",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_15",
+    "question": "How many flash floods occurred in Kullu in 2027?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "FUTURE_YEAR",
+    "target_year": 2027,
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  },
+  {
+    "question_id": "GQ_NEG_16",
+    "question": "What does the 1995 Bilaspur district flood report say about dam overflow?",
+    "track": "NEGATIVE_REJECTED",
+    "expected_route": "NEGATIVE_REJECTED",
+    "category": "OUT_OF_PERIOD_AND_DISTRICT",
+    "target_year": 1995,
+    "target_district": "Bilaspur",
+    "expected_status": "NO_SUPPORTED_EVIDENCE"
+  }
+]

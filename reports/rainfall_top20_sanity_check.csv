@@ -1,0 +1,41 @@
+rank,dataset_level,date,entity,rainfall_mm,source,quality_flag,spatial_temporal_context
+1,GRID_CELL,2022-08-20,"Grid (32.25N, 76.25E)",325.13,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2022)
+2,GRID_CELL,2018-08-24,"Grid (32.25N, 76.25E)",285.95,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2018)
+3,GRID_CELL,2018-08-13,"Grid (31.25N, 76.75E)",266.46,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2018)
+4,GRID_CELL,2018-08-13,"Grid (31.75N, 76.25E)",262.22,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2018)
+5,GRID_CELL,2023-08-14,"Grid (32.25N, 76.25E)",246.81,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2023)
+6,GRID_CELL,2019-08-18,"Grid (31.25N, 76.50E)",243.36,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2019)
+7,GRID_CELL,2015-08-12,"Grid (32.25N, 76.25E)",231.83,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2015)
+8,GRID_CELL,2025-09-14,"Grid (32.25N, 76.25E)",226.95,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2025)
+9,GRID_CELL,2021-07-13,"Grid (32.25N, 76.25E)",226.25,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2021)
+10,GRID_CELL,2022-07-11,"Grid (32.25N, 76.25E)",222.09,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2022)
+11,GRID_CELL,2015-07-17,"Grid (31.25N, 76.75E)",216.08,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2015)
+12,GRID_CELL,2024-07-06,"Grid (32.25N, 76.25E)",211.14,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2024)
+13,GRID_CELL,2022-08-15,"Grid (32.25N, 76.25E)",210.85,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2022)
+14,GRID_CELL,2015-09-23,"Grid (32.25N, 75.50E)",209.06,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2015)
+15,GRID_CELL,2023-08-14,"Grid (32.00N, 76.25E)",208.27,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2023)
+16,GRID_CELL,2016-08-02,"Grid (32.25N, 76.25E)",203.15,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2016)
+17,GRID_CELL,2018-09-24,"Grid (32.25N, 75.50E)",201.61,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2018)
+18,GRID_CELL,2025-07-01,"Grid (31.75N, 76.75E)",200.03,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2025)
+19,GRID_CELL,2023-08-14,"Grid (32.00N, 76.50E)",197.34,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2023)
+20,GRID_CELL,2013-08-02,"Grid (32.25N, 76.25E)",194.46,IMD Pune 0.25° Gridded (SRC_IMD_GRIDDED_025),VALID,Monsoon season event (2013)
+1,DISTRICT_AGGREGATE,2023-07-09,Kangra,118.53,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=160.6 mm, Active cells=28"
+2,DISTRICT_AGGREGATE,2019-08-18,Mandi,107.2,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=243.36 mm, Active cells=20"
+3,DISTRICT_AGGREGATE,2023-07-09,Mandi,100.54,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=164.95 mm, Active cells=20"
+4,DISTRICT_AGGREGATE,2023-07-10,Shimla,97.55,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=188.42 mm, Active cells=15"
+5,DISTRICT_AGGREGATE,2018-08-13,Mandi,94.68,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=266.46 mm, Active cells=20"
+6,DISTRICT_AGGREGATE,2023-08-14,Kangra,93.91,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=246.81 mm, Active cells=28"
+7,DISTRICT_AGGREGATE,2023-07-10,Mandi,93.69,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=146.04 mm, Active cells=20"
+8,DISTRICT_AGGREGATE,2025-09-01,Shimla,93.52,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=181.71 mm, Active cells=15"
+9,DISTRICT_AGGREGATE,2018-08-13,Kangra,91.76,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=262.22 mm, Active cells=28"
+10,DISTRICT_AGGREGATE,2023-07-11,Shimla,86.67,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=169.65 mm, Active cells=15"
+11,DISTRICT_AGGREGATE,2025-02-28,Kullu,86.48,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=129.23 mm, Active cells=16"
+12,DISTRICT_AGGREGATE,2018-09-23,Kangra,86.15,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=127.28 mm, Active cells=28"
+13,DISTRICT_AGGREGATE,2018-09-24,Kangra,85.01,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=201.61 mm, Active cells=28"
+14,DISTRICT_AGGREGATE,2023-07-09,Shimla,84.48,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=160.29 mm, Active cells=15"
+15,DISTRICT_AGGREGATE,2023-07-09,Kullu,83.53,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=131.29 mm, Active cells=16"
+16,DISTRICT_AGGREGATE,2019-08-18,Shimla,83.14,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=141.18 mm, Active cells=15"
+17,DISTRICT_AGGREGATE,2025-08-26,Kangra,80.71,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=158.61 mm, Active cells=28"
+18,DISTRICT_AGGREGATE,2023-07-10,Kangra,80.64,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=154.63 mm, Active cells=28"
+19,DISTRICT_AGGREGATE,2019-08-18,Kangra,77.67,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=141.64 mm, Active cells=28"
+20,DISTRICT_AGGREGATE,2023-08-14,Mandi,76.24,IMD Gridded Spatial Aggregate (Bounding Box Mean),VALID_AGGREGATE,"Max single cell=197.34 mm, Active cells=20"

@@ -1,0 +1,5 @@
+station_name,district,date,year,timestamp_ist,rainfall_mm,source_document,page_table_location,source_url,source_organization,quality_flag,source_type
+Kangra Aero AWS,Kangra,2026-09-05,2026,2026-09-05 08:30:00,34.0,imd_shimla_three_hourly_telemetry_2026.pdf,3-Hour Telemetry Table 1,https://mausam.imd.gov.in/shimla/mcdata/three_hourly.pdf,IMD MC Shimla,VALID,IMD_TELEMETRY
+Sundernagar AWS,Mandi,2026-09-05,2026,2026-09-05 08:30:00,22.5,imd_shimla_three_hourly_telemetry_2026.pdf,3-Hour Telemetry Table 1,https://mausam.imd.gov.in/shimla/mcdata/three_hourly.pdf,IMD MC Shimla,VALID,IMD_TELEMETRY
+Shimla AWS,Shimla,2026-09-05,2026,2026-09-05 08:30:00,28.5,imd_shimla_three_hourly_telemetry_2026.pdf,3-Hour Telemetry Table 1,https://mausam.imd.gov.in/shimla/mcdata/three_hourly.pdf,IMD MC Shimla,VALID,IMD_TELEMETRY
+Bhuntar AWS,Kullu,2026-09-05,2026,2026-09-05 08:30:00,16.0,imd_shimla_three_hourly_telemetry_2026.pdf,3-Hour Telemetry Table 1,https://mausam.imd.gov.in/shimla/mcdata/three_hourly.pdf,IMD MC Shimla,VALID,IMD_TELEMETRY

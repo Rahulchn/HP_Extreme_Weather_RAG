@@ -1,0 +1,28 @@
+canonical_event_id,event_date,district,event_type,daily_station_rainfall_mm,reporting_station,daily_gridded_max_mm,daily_gridded_mean_mm,rainfall_quality_flag,rainfall_lineage_ref
+CANON_20110811_SHI_RAM,2011-08-11,Shimla,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20140608_MAN_THA,2014-06-08,Mandi,Flash Flood,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20140814_KUL_KUL,2014-08-14,Kullu,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20170812_MAN_PAD,2017-08-12,Mandi,Cloudburst,152.00,Sundernagar,NULL,NULL,VALID,imd_climatology_mandi.pdf (Table 2: Extreme Events);imd_climatology_mandi.pdf (Table 2: Extreme Events)
+CANON_20180923_KUL_MAN,2018-09-23,Kullu,Cloudburst,105.00,Bhuntar Aero,NULL,NULL,VALID,imd_climatology_kullu.pdf (Table 2: Extreme Events);imd_climatology_kullu.pdf (Table 2: Extreme Events)
+CANON_20180924_KUL_KUL,2018-09-24,Kullu,Flash Flood,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20190818_SHI_ROH,2019-08-18,Shimla,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20190818_SHI_CHI,2019-08-18,Shimla,Flash Flood,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20200810_KUL_ANN,2020-08-10,Kullu,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20210712_KAN_DHA,2021-07-12,Kangra,Cloudburst and Flash Flood,180.00,Kangra Aero,NULL,NULL,VALID,imd_climatology_kangra.pdf (Table 2: Significant Rainfall Events);imd_climatology_kangra.pdf (Table 2: Significant Rainfall Events)
+CANON_20210728_KUL_MAN,2021-07-28,Kullu,Flash Flood,110.00,Manali,NULL,NULL,VALID,imd_climatology_kullu.pdf (Table 2: Significant Rainfall Events)
+CANON_20210728_SHI_RAM,2021-07-28,Shimla,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20220706_KUL_MAN,2022-07-06,Kullu,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20220819_MAN_GOH,2022-08-19,Mandi,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20220820_KAN_NUR,2022-08-20,Kangra,Flash Flood,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20220820_MAN_BAL,2022-08-20,Mandi,Flash Flood,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20230709_KUL_BHU,2023-07-09,Kullu,Cloudburst,120.00,Bhuntar Aero,NULL,NULL,VALID,"imd_shimla_monsoon_report_2023.pdf (Page 14, Table 3.2);imd_shimla_monsoon_report_2023.pdf (Page 14, Table 3.2)"
+CANON_20230709_KUL_MAN,2023-07-09,Kullu,Flash Flood,120.00,Bhuntar Aero,NULL,NULL,VALID,"imd_shimla_monsoon_report_2023.pdf (Page 14, Table 3.2);imd_shimla_monsoon_report_2023.pdf (Page 14, Table 3.2)"
+CANON_20230709_MAN_THU,2023-07-09,Mandi,Cloudburst,155.00,Pandoh,NULL,NULL,VALID,"imd_shimla_monsoon_report_2023.pdf (Page 14, Table 3.2);imd_shimla_monsoon_report_2023.pdf (Page 14, Table 3.2)"
+CANON_20230709_MAN_SAD,2023-07-09,Mandi,Flash Flood,155.00,Pandoh,NULL,NULL,VALID,"imd_shimla_monsoon_report_2023.pdf (Page 14, Table 3.2);imd_shimla_monsoon_report_2023.pdf (Page 14, Table 3.2)"
+CANON_20230710_SHI_SHI,2023-07-10,Shimla,Flash Flood,146.00,Shimla City,NULL,NULL,VALID,"imd_shimla_monsoon_report_2023.pdf (Page 15, Table 3.3)"
+CANON_20230814_KAN_JAW,2023-08-14,Kangra,Cloudburst,220.00,Palampur,NULL,NULL,VALID,"imd_shimla_monsoon_report_2023.pdf (Page 18, Table 4.1);imd_shimla_monsoon_report_2023.pdf (Page 18, Table 4.1)"
+CANON_20230814_KAN_NUR,2023-08-14,Kangra,Flash Flood,220.00,Palampur,NULL,NULL,VALID,"imd_shimla_monsoon_report_2023.pdf (Page 18, Table 4.1);imd_shimla_monsoon_report_2023.pdf (Page 18, Table 4.1)"
+CANON_20230814_SHI_SHI,2023-08-14,Shimla,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20240731_KUL_NIR,2024-07-31,Kullu,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20240731_MAN_PAD,2024-07-31,Mandi,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction
+CANON_20240731_SHI_RAM,2024-07-31,Shimla,Cloudburst,NULL,NULL,NULL,NULL,NOT_AVAILABLE,IMD Gridded Matrix Extraction

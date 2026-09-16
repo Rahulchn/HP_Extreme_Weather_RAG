@@ -66,7 +66,7 @@ def inject_custom_theme() -> None:
     Scientific Research' design system:
     - Full-page background with vibrant, visible Himalayan mountain landscape
     - High-contrast frosted glass cards and responsive typography
-    - Hidden sidebar for clean, full-width focus
+    - Collapsible sidebar with project scope and evidence guidance
     - Sleek inputs, buttons, and badges
     """
     custom_css = f"""
@@ -92,12 +92,10 @@ def inject_custom_theme() -> None:
         background: transparent !important;
     }}
 
-    /* Completely hide sidebar and expander controls */
-    [data-testid="stSidebar"], 
-    section[data-testid="stSidebar"], 
-    [data-testid="collapsedControl"],
-    button[data-testid="stSidebarCollapseButton"] {{
-        display: none !important;
+    /* Keep the sidebar available without competing with the main workspace */
+    [data-testid="stSidebar"] {{
+        background: rgba(11, 19, 43, 0.96) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
     }}
 
     /* Main container frame */

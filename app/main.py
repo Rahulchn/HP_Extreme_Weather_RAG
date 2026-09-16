@@ -40,7 +40,10 @@ def main() -> None:
     # 1. Inject Modern Himalayan Visual Styling
     components.inject_custom_theme()
 
-    # 2. Render Hero Header (clean typography, no emoji)
+    # 2. Keep project scope and evidence guidance one click away
+    components.render_clean_sidebar()
+
+    # 3. Render Hero Header (clean typography, no emoji)
     components.render_hero_header()
 
     # 4. Session State Initialization

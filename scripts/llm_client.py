@@ -20,6 +20,8 @@ import logging
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timezone
 
+from scripts.security_utils import sanitize_sensitive_text
+
 # Load environment variables from .env if present (without external dependencies)
 def load_dotenv(env_path: Optional[str] = None) -> None:
     candidate_paths = []
@@ -58,20 +60,44 @@ DEFAULT_MAX_TOKENS = 1024
 
 logger = logging.getLogger("llm_client")
 
+
+def _env_int(name: str, default: int, minimum: int, maximum: int) -> int:
+    """Read a bounded integer setting, falling back safely on invalid input."""
+    try:
+        value = int(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return default
+    return value if minimum <= value <= maximum else default
+
+
+def _env_float(name: str, default: float, minimum: float, maximum: float) -> float:
+    """Read a bounded floating-point setting, falling back safely on invalid input."""
+    try:
+        value = float(os.environ.get(name, default))
+    except (TypeError, ValueError):
+        return default
+    return value if minimum <= value <= maximum else default
+
+
+def sanitize_error_message(value: Any) -> str:
+    """Remove common credential formats before an exception reaches callers."""
+    return sanitize_sensitive_text(value)
+
 def get_hf_config() -> Dict[str, Any]:
     """
     Returns current configuration settings without exposing the token secret.
     """
     token = os.environ.get("HF_TOKEN")
-    model = os.environ.get("HF_MODEL", DEFAULT_HF_MODEL).strip()
-    timeout = int(os.environ.get("HF_TIMEOUT", DEFAULT_TIMEOUT))
-    temperature = float(os.environ.get("HF_TEMPERATURE", DEFAULT_TEMPERATURE))
-    max_tokens = int(os.environ.get("HF_MAX_TOKENS", DEFAULT_MAX_TOKENS))
+    model = os.environ.get("HF_MODEL", DEFAULT_HF_MODEL).strip() or DEFAULT_HF_MODEL
+    timeout = _env_int("HF_TIMEOUT", DEFAULT_TIMEOUT, minimum=1, maximum=300)
+    temperature = _env_float("HF_TEMPERATURE", DEFAULT_TEMPERATURE, minimum=0.0, maximum=2.0)
+    max_tokens = _env_int("HF_MAX_TOKENS", DEFAULT_MAX_TOKENS, minimum=1, maximum=32768)
 
     has_token = bool(token and len(token.strip()) > 5)
-    masked_token = f"{token[:4]}...{token[-4:]}" if has_token else "NOT_CONFIGURED"
+    # Preserve the existing status field without revealing any token fragments.
+    masked_token = "CONFIGURED" if has_token else "NOT_CONFIGURED"
 
-    provider = os.environ.get("HF_PROVIDER", "featherless-ai").strip()
+    provider = os.environ.get("HF_PROVIDER", "featherless-ai").strip() or "featherless-ai"
 
     return {
         "model": model,
@@ -169,7 +195,7 @@ def call_hf_inference(
 
     except Exception as e:
         latency_ms = round((time.time() - t0) * 1000, 2)
-        err_str = str(e)
+        err_str = sanitize_error_message(e)
 
         # Categorize known HTTP / client exceptions
         if "401" in err_str or "unauthorized" in err_str.lower() or "invalid token" in err_str.lower():
@@ -191,6 +217,7 @@ def call_hf_inference(
         return {
             "status": status,
             "model": selected_model,
+            "provider": selected_provider,
             "content": None,
             "error_message": msg,
             "latency_ms": latency_ms

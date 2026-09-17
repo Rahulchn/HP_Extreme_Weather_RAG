@@ -24,7 +24,6 @@ Safety Invariants:
 import os
 import sys
 import time
-import re
 import json
 from dataclasses import dataclass, field, asdict
 from typing import Dict, Any, List, Optional
@@ -39,6 +38,7 @@ import scripts.evidence_pack as ep
 import scripts.answer_generator as ag
 import scripts.answer_validator as av
 import scripts.llm_client as llm
+from scripts.security_utils import sanitize_sensitive_text
 
 
 # -------------------------------------------------------------
@@ -63,14 +63,7 @@ def sanitize_text(text: Any) -> str:
     Sanitizes string inputs to guarantee no API tokens or authorization
     secrets appear in exceptions, logs, UI strings, or serialized outputs.
     """
-    if not text:
-        return ""
-    s = str(text)
-    # Strip Hugging Face user access tokens
-    s = re.sub(r"hf_[A-Za-z0-9]{20,}", "[REDACTED_HF_TOKEN]", s)
-    # Strip Authorization: Bearer tokens
-    s = re.sub(r"(?i)bearer\s+[A-Za-z0-9_\-\.]{15,}", "Bearer [REDACTED_TOKEN]", s)
-    return s
+    return sanitize_sensitive_text(text)
 
 
 # -------------------------------------------------------------

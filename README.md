@@ -68,6 +68,19 @@ Run the application from the repository root:
 streamlit run app/main.py
 ```
 
+## Development checks
+
+Install the development dependencies and run the focused regression suite:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest -q
+```
+
+The tests cover configuration fallback behavior and credential redaction. The
+existing end-to-end routing and generation checks remain available under
+`scripts/test_*.py` for deeper validation.
+
 ## Offline smoke test
 
 Retrieval and validation can be checked without making an LLM request:

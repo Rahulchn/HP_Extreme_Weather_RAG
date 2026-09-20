@@ -1,5 +1,7 @@
 # Himachal Pradesh Extreme Weather RAG
 
+[![Tests](https://github.com/Rahulchn/HP_Extreme_Weather_RAG/actions/workflows/tests.yml/badge.svg)](https://github.com/Rahulchn/HP_Extreme_Weather_RAG/actions/workflows/tests.yml)
+
 An evidence-grounded retrieval-augmented generation system for exploring rainfall, cloudburst, and flash-flood records across **Kangra, Mandi, Shimla, and Kullu** from **2011 to 2026**. Data for 2026 is treated as partial telemetry and is never presented as a complete annual series.
 
 The Streamlit application routes each question to a controlled retrieval path, builds a provenance-rich evidence pack, generates an answer through a configured Hugging Face model, and validates its citations before displaying it.
@@ -79,7 +81,8 @@ python -m pytest -q
 
 The tests cover configuration fallback behavior and credential redaction. The
 existing end-to-end routing and generation checks remain available under
-`scripts/test_*.py` for deeper validation.
+`scripts/test_*.py` for deeper validation. `pytest.ini` deliberately limits
+normal test discovery to `tests/`, keeping the default check fast and offline.
 
 ## Offline smoke test
 

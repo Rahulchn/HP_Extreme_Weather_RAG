@@ -17,10 +17,43 @@ import os
 import sys
 import time
 import logging
+import re
 from typing import Dict, Any, List, Optional
 from datetime import datetime, timezone
 
 from scripts.security_utils import sanitize_sensitive_text
+
+
+_ENV_KEY_PATTERN = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+
+def _parse_dotenv_line(line: str) -> Optional[tuple[str, str]]:
+    """Parse one dotenv assignment while preserving comments inside quotes."""
+    stripped = line.strip()
+    if not stripped or stripped.startswith("#"):
+        return None
+    if stripped.startswith("export "):
+        stripped = stripped[7:].lstrip()
+    if "=" not in stripped:
+        return None
+
+    key, raw_value = stripped.split("=", 1)
+    key = key.strip()
+    if not _ENV_KEY_PATTERN.fullmatch(key):
+        return None
+
+    raw_value = raw_value.strip()
+    if raw_value and raw_value[0] in "'\"":
+        quote = raw_value[0]
+        closing_quote = raw_value.find(quote, 1)
+        trailing = raw_value[closing_quote + 1:].strip() if closing_quote >= 0 else ""
+        if closing_quote >= 0 and (not trailing or trailing.startswith("#")):
+            value = raw_value[1:closing_quote]
+        else:
+            value = raw_value
+    else:
+        value = raw_value.split(" #", 1)[0].rstrip()
+    return key, value
 
 # Load environment variables from .env if present (without external dependencies)
 def load_dotenv(env_path: Optional[str] = None) -> None:
@@ -39,13 +72,10 @@ def load_dotenv(env_path: Optional[str] = None) -> None:
             try:
                 with open(p, "r", encoding="utf-8") as f:
                     for line in f:
-                        line = line.strip()
-                        if line and not line.startswith("#") and "=" in line:
-                            k, v = line.split("=", 1)
-                            k = k.strip()
-                            v = v.strip().strip("'\"")
-                            if k and k not in os.environ:
-                                os.environ[k] = v
+                        assignment = _parse_dotenv_line(line)
+                        if assignment:
+                            key, value = assignment
+                            os.environ.setdefault(key, value)
                 break
             except Exception:
                 pass

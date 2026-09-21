@@ -1,7 +1,51 @@
 """Regression tests for configuration safety and secret redaction."""
 
+import os
+
 from scripts import llm_client
 from scripts.security_utils import sanitize_sensitive_text
+
+
+def test_dotenv_loader_supports_export_comments_and_quotes(monkeypatch, tmp_path):
+    env_file = tmp_path / ".env"
+    env_file.write_text(
+        "\n".join(
+            [
+                "# ignored comment",
+                "export TEST_RAG_EXPORTED=enabled",
+                'TEST_RAG_QUOTED="value # preserved" # ignored comment',
+                "TEST_RAG_INLINE=value # ignored comment",
+                "TEST_RAG_EMPTY=",
+                "1INVALID_KEY=ignored",
+            ]
+        ),
+        encoding="utf-8",
+    )
+    for key in (
+        "TEST_RAG_EXPORTED",
+        "TEST_RAG_QUOTED",
+        "TEST_RAG_INLINE",
+        "TEST_RAG_EMPTY",
+    ):
+        monkeypatch.delenv(key, raising=False)
+
+    llm_client.load_dotenv(str(env_file))
+
+    assert os.environ["TEST_RAG_EXPORTED"] == "enabled"
+    assert os.environ["TEST_RAG_QUOTED"] == "value # preserved"
+    assert os.environ["TEST_RAG_INLINE"] == "value"
+    assert os.environ["TEST_RAG_EMPTY"] == ""
+    assert "1INVALID_KEY" not in os.environ
+
+
+def test_dotenv_loader_does_not_override_existing_environment(monkeypatch, tmp_path):
+    env_file = tmp_path / ".env"
+    env_file.write_text("TEST_RAG_EXISTING=from-file\n", encoding="utf-8")
+    monkeypatch.setenv("TEST_RAG_EXISTING", "from-environment")
+
+    llm_client.load_dotenv(str(env_file))
+
+    assert os.environ["TEST_RAG_EXISTING"] == "from-environment"
 
 
 def test_invalid_numeric_environment_values_fall_back(monkeypatch):

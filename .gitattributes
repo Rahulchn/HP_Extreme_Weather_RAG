@@ -1,0 +1,19 @@
+# Keep source and documentation diffs stable across Windows and Linux.
+* text=auto
+.gitattributes text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+
+# Preserve generated data and document formats byte-for-byte.
+*.db binary
+*.faiss binary
+*.npy binary
+*.pdf binary
+*.docx binary
+*.pptx binary
+*.xlsx binary

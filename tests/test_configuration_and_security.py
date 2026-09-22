@@ -104,7 +104,10 @@ def test_response_sanitizer_redacts_common_credentials():
     message = (
         "api_key=abcdef1234567890 "
         "github_pat_abcdefghijklmnopqrstuvwxyz123456 "
-        "Bearer abcdefghijklmnopqrstuvwxyz"
+        "Bearer abcdefghijklmnopqrstuvwxyz "
+        "Authorization: Basic dXNlcjpwYXNzd29yZA== "
+        "x-api-key: header-secret "
+        "https://example.test/callback?token=query-secret&mode=safe"
     )
 
     sanitized = sanitize_sensitive_text(message)
@@ -112,3 +115,17 @@ def test_response_sanitizer_redacts_common_credentials():
     assert "abcdef1234567890" not in sanitized
     assert "github_pat_abcdefghijklmnopqrstuvwxyz123456" not in sanitized
     assert "abcdefghijklmnopqrstuvwxyz" not in sanitized
+    assert "dXNlcjpwYXNzd29yZA==" not in sanitized
+    assert "header-secret" not in sanitized
+    assert "query-secret" not in sanitized
+    assert "&mode=safe" in sanitized
+
+
+def test_response_sanitizer_handles_password_and_refresh_token():
+    message = "password=hunter2; refresh_token=refresh-me, result=denied"
+
+    sanitized = sanitize_sensitive_text(message)
+
+    assert "hunter2" not in sanitized
+    assert "refresh-me" not in sanitized
+    assert "result=denied" in sanitized

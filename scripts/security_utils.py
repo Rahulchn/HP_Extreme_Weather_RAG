@@ -22,7 +22,13 @@ def sanitize_sensitive_text(value: Any) -> str:
         text,
     )
     text = re.sub(
-        r"(?i)\b(api[_-]?key|access[_-]?token|secret|token)\s*([:=])\s*[^\s,;]+",
+        r"(?i)basic\s+[A-Za-z0-9+/=]{8,}",
+        "Basic [REDACTED_TOKEN]",
+        text,
+    )
+    text = re.sub(
+        r"(?i)\b(api[_-]?key|x-api-key|access[_-]?token|refresh[_-]?token|"
+        r"client[_-]?secret|secret|token|password)\s*([:=])\s*[^\s,;&#]+",
         r"\1\2[REDACTED]",
         text,
     )

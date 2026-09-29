@@ -100,6 +100,45 @@ def test_error_sanitizer_redacts_common_credentials():
     assert sanitized.count("REDACTED") >= 4
 
 
+def test_hf_error_classification_is_stable_and_sanitized():
+    cases = [
+        ("401 Unauthorized", "UNAUTHORIZED"),
+        ("Too many requests", "RATE_LIMITED"),
+        ("503 model currently loading", "MODEL_UNAVAILABLE"),
+        ("Connection timed out", "TIMEOUT"),
+        ("Socket failure token=provider-secret", "API_ERROR"),
+    ]
+
+    for error, expected_status in cases:
+        status, message = llm_client.classify_hf_error(
+            error,
+            model="example/model",
+            timeout=15,
+        )
+
+        assert status == expected_status
+        assert message
+        assert "provider-secret" not in message
+
+
+def test_hf_error_messages_include_safe_context():
+    status, message = llm_client.classify_hf_error(
+        "503 Service Unavailable",
+        model="example/model",
+        timeout=15,
+    )
+    assert status == "MODEL_UNAVAILABLE"
+    assert "example/model" in message
+
+    status, message = llm_client.classify_hf_error(
+        "request timeout",
+        model="example/model",
+        timeout=15,
+    )
+    assert status == "TIMEOUT"
+    assert "15s" in message
+
+
 def test_response_sanitizer_redacts_common_credentials():
     message = (
         "api_key=abcdef1234567890 "

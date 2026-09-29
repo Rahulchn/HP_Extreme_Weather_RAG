@@ -77,7 +77,7 @@ def load_dotenv(env_path: Optional[str] = None) -> None:
                             key, value = assignment
                             os.environ.setdefault(key, value)
                 break
-            except Exception:
+            except OSError:
                 pass
 
 # Load local .env if available
@@ -112,6 +112,32 @@ def _env_float(name: str, default: float, minimum: float, maximum: float) -> flo
 def sanitize_error_message(value: Any) -> str:
     """Remove common credential formats before an exception reaches callers."""
     return sanitize_sensitive_text(value)
+
+
+def classify_hf_error(error: Any, model: str, timeout: int) -> tuple[str, str]:
+    """Map provider failures to stable statuses and sanitized user messages."""
+    error_text = sanitize_error_message(error)
+    lowered = error_text.lower()
+
+    if "401" in error_text or "unauthorized" in lowered or "invalid token" in lowered:
+        return (
+            "UNAUTHORIZED",
+            "Hugging Face API returned 401 Unauthorized: Invalid or expired HF_TOKEN.",
+        )
+    if "429" in error_text or "rate limit" in lowered or "too many requests" in lowered:
+        return (
+            "RATE_LIMITED",
+            "Hugging Face API returned 429: Inference rate limit reached. Please retry shortly.",
+        )
+    if "503" in error_text or "currently loading" in lowered or "estimated_time" in lowered:
+        return (
+            "MODEL_UNAVAILABLE",
+            f"Hugging Face API returned 503: Model '{model}' is currently loading or unavailable.",
+        )
+    if "timeout" in lowered or "timed out" in lowered:
+        return "TIMEOUT", f"Hugging Face API request timed out after {timeout}s."
+    return "API_ERROR", f"Hugging Face API error: {error_text}"
+
 
 def get_hf_config() -> Dict[str, Any]:
     """
@@ -184,7 +210,7 @@ def call_hf_inference(
             "latency_ms": 0.0
         }
 
-    t0 = time.time()
+    t0 = time.perf_counter()
     try:
         client = InferenceClient(
             model=selected_model,
@@ -200,7 +226,7 @@ def call_hf_inference(
             max_tokens=req_max_tokens
         )
 
-        latency_ms = round((time.time() - t0) * 1000, 2)
+        latency_ms = round((time.perf_counter() - t0) * 1000, 2)
 
         if not response or not response.choices:
             return {
@@ -224,25 +250,8 @@ def call_hf_inference(
         }
 
     except Exception as e:
-        latency_ms = round((time.time() - t0) * 1000, 2)
-        err_str = sanitize_error_message(e)
-
-        # Categorize known HTTP / client exceptions
-        if "401" in err_str or "unauthorized" in err_str.lower() or "invalid token" in err_str.lower():
-            status = "UNAUTHORIZED"
-            msg = "Hugging Face API returned 401 Unauthorized: Invalid or expired HF_TOKEN."
-        elif "429" in err_str or "rate limit" in err_str.lower() or "too many requests" in err_str.lower():
-            status = "RATE_LIMITED"
-            msg = "Hugging Face API returned 429: Free tier inference rate limit reached. Please retry shortly."
-        elif "503" in err_str or "currently loading" in err_str.lower() or "estimated_time" in err_str.lower():
-            status = "MODEL_UNAVAILABLE"
-            msg = f"Hugging Face API returned 503: Model '{selected_model}' is currently loading or unavailable."
-        elif "timeout" in err_str.lower() or "timed out" in err_str.lower():
-            status = "TIMEOUT"
-            msg = f"Hugging Face API request timed out after {req_timeout}s."
-        else:
-            status = "API_ERROR"
-            msg = f"Hugging Face API error: {err_str}"
+        latency_ms = round((time.perf_counter() - t0) * 1000, 2)
+        status, msg = classify_hf_error(e, selected_model, req_timeout)
 
         return {
             "status": status,

@@ -91,22 +91,50 @@ DEFAULT_MAX_TOKENS = 1024
 logger = logging.getLogger("llm_client")
 
 
-def _env_int(name: str, default: int, minimum: int, maximum: int) -> int:
-    """Read a bounded integer setting, falling back safely on invalid input."""
+def _bounded_int(value: Any, default: int, minimum: int, maximum: int) -> int:
+    """Coerce an integer-like value and enforce an inclusive range."""
+    if isinstance(value, bool):
+        return default
     try:
-        value = int(os.environ.get(name, default))
+        parsed = int(value)
     except (TypeError, ValueError):
         return default
-    return value if minimum <= value <= maximum else default
+    return parsed if minimum <= parsed <= maximum else default
+
+
+def _bounded_float(value: Any, default: float, minimum: float, maximum: float) -> float:
+    """Coerce a numeric value and enforce an inclusive range."""
+    if isinstance(value, bool):
+        return default
+    try:
+        parsed = float(value)
+    except (TypeError, ValueError):
+        return default
+    return parsed if minimum <= parsed <= maximum else default
+
+
+def _env_int(name: str, default: int, minimum: int, maximum: int) -> int:
+    """Read a bounded integer setting, falling back safely on invalid input."""
+    return _bounded_int(os.environ.get(name, default), default, minimum, maximum)
 
 
 def _env_float(name: str, default: float, minimum: float, maximum: float) -> float:
     """Read a bounded floating-point setting, falling back safely on invalid input."""
-    try:
-        value = float(os.environ.get(name, default))
-    except (TypeError, ValueError):
-        return default
-    return value if minimum <= value <= maximum else default
+    return _bounded_float(os.environ.get(name, default), default, minimum, maximum)
+
+
+def resolve_inference_options(
+    timeout: Any,
+    temperature: Any,
+    max_tokens: Any,
+    config: Dict[str, Any],
+) -> tuple[int, float, int]:
+    """Resolve and bound per-request overrides against validated configuration."""
+    return (
+        _bounded_int(timeout, config["timeout"], minimum=1, maximum=300),
+        _bounded_float(temperature, config["temperature"], minimum=0.0, maximum=2.0),
+        _bounded_int(max_tokens, config["max_tokens"], minimum=1, maximum=32768),
+    )
 
 
 def sanitize_error_message(value: Any) -> str:
@@ -190,15 +218,18 @@ def call_hf_inference(
     - API_ERROR: Other network or HTTP error
     - MALFORMED_RESPONSE: Output could not be parsed
     """
-    from huggingface_hub import InferenceClient
-
     cfg = get_hf_config()
-    selected_model = model or cfg["model"]
-    selected_provider = provider or cfg["provider"]
-    auth_token = token or os.environ.get("HF_TOKEN")
-    req_timeout = timeout or cfg["timeout"]
-    req_temp = temperature if temperature is not None else cfg["temperature"]
-    req_max_tokens = max_tokens or cfg["max_tokens"]
+    selected_model = model.strip() if isinstance(model, str) else ""
+    selected_provider = provider.strip() if isinstance(provider, str) else ""
+    selected_model = selected_model or cfg["model"]
+    selected_provider = selected_provider or cfg["provider"]
+    auth_token = token if token is not None else os.environ.get("HF_TOKEN")
+    req_timeout, req_temp, req_max_tokens = resolve_inference_options(
+        timeout if timeout is not None else cfg["timeout"],
+        temperature if temperature is not None else cfg["temperature"],
+        max_tokens if max_tokens is not None else cfg["max_tokens"],
+        cfg,
+    )
 
     if not auth_token or not auth_token.strip():
         return {
@@ -212,6 +243,8 @@ def call_hf_inference(
 
     t0 = time.perf_counter()
     try:
+        from huggingface_hub import InferenceClient
+
         client = InferenceClient(
             model=selected_model,
             provider=selected_provider,

@@ -72,6 +72,47 @@ def test_out_of_range_environment_values_fall_back(monkeypatch):
     assert config["max_tokens"] == llm_client.DEFAULT_MAX_TOKENS
 
 
+def test_request_overrides_are_coerced_and_bounded():
+    config = {"timeout": 30, "temperature": 0.1, "max_tokens": 1024}
+
+    assert llm_client.resolve_inference_options("15", "0.5", "256", config) == (
+        15,
+        0.5,
+        256,
+    )
+    assert llm_client.resolve_inference_options(0, 3.5, -1, config) == (
+        30,
+        0.1,
+        1024,
+    )
+    assert llm_client.resolve_inference_options(True, False, True, config) == (
+        30,
+        0.1,
+        1024,
+    )
+
+
+def test_explicit_empty_token_does_not_fall_back_to_environment(monkeypatch):
+    monkeypatch.setenv("HF_TOKEN", "hf_environment_token_that_should_not_be_used")
+    monkeypatch.setenv("HF_MODEL", "test/model")
+    monkeypatch.setenv("HF_PROVIDER", "test-provider")
+
+    response = llm_client.call_hf_inference(
+        messages=[],
+        model="   ",
+        provider="   ",
+        token="",
+        timeout=0,
+        temperature=4.0,
+        max_tokens=-5,
+    )
+
+    assert response["status"] == "MISSING_TOKEN"
+    assert response["model"] == "test/model"
+    assert response["provider"] == "test-provider"
+    assert response["latency_ms"] == 0.0
+
+
 def test_config_status_never_contains_token_fragments(monkeypatch):
     token = "hf_abcdefghijklmnopqrstuvwxyz123456"
     monkeypatch.setenv("HF_TOKEN", token)

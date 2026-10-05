@@ -1,6 +1,7 @@
 """Regression tests for configuration safety and secret redaction."""
 
 import os
+from types import SimpleNamespace
 
 from scripts import llm_client
 from scripts.security_utils import sanitize_sensitive_text
@@ -178,6 +179,32 @@ def test_hf_error_messages_include_safe_context():
     )
     assert status == "TIMEOUT"
     assert "15s" in message
+
+
+def test_hf_response_content_requires_nonempty_text():
+    valid = SimpleNamespace(
+        choices=[SimpleNamespace(message=SimpleNamespace(content="  grounded answer  "))]
+    )
+    assert llm_client.extract_hf_response_content(valid) == "  grounded answer  "
+
+    malformed_responses = [
+        None,
+        SimpleNamespace(choices=[]),
+        SimpleNamespace(choices=None),
+        SimpleNamespace(choices=[SimpleNamespace(message=None)]),
+        SimpleNamespace(
+            choices=[SimpleNamespace(message=SimpleNamespace(content=None))]
+        ),
+        SimpleNamespace(
+            choices=[SimpleNamespace(message=SimpleNamespace(content="   "))]
+        ),
+        SimpleNamespace(
+            choices=[SimpleNamespace(message=SimpleNamespace(content={"text": "no"}))]
+        ),
+    ]
+
+    for response in malformed_responses:
+        assert llm_client.extract_hf_response_content(response) is None
 
 
 def test_response_sanitizer_redacts_common_credentials():

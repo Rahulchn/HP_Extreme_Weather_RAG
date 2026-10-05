@@ -167,6 +167,18 @@ def classify_hf_error(error: Any, model: str, timeout: int) -> tuple[str, str]:
     return "API_ERROR", f"Hugging Face API error: {error_text}"
 
 
+def extract_hf_response_content(response: Any) -> Optional[str]:
+    """Return usable assistant text from a provider response, or None."""
+    try:
+        content = response.choices[0].message.content
+    except (AttributeError, IndexError, TypeError):
+        return None
+
+    if not isinstance(content, str) or not content.strip():
+        return None
+    return content
+
+
 def get_hf_config() -> Dict[str, Any]:
     """
     Returns current configuration settings without exposing the token secret.
@@ -261,17 +273,16 @@ def call_hf_inference(
 
         latency_ms = round((time.perf_counter() - t0) * 1000, 2)
 
-        if not response or not response.choices:
+        content = extract_hf_response_content(response)
+        if content is None:
             return {
                 "status": "MALFORMED_RESPONSE",
                 "model": selected_model,
                 "provider": selected_provider,
                 "content": None,
-                "error_message": "Hugging Face returned an empty response object.",
+                "error_message": "Hugging Face returned an empty or malformed response.",
                 "latency_ms": latency_ms
             }
-
-        content = response.choices[0].message.content
 
         return {
             "status": "OK",

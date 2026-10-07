@@ -25,6 +25,7 @@ from scripts.security_utils import sanitize_sensitive_text
 
 
 _ENV_KEY_PATTERN = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+_ALLOWED_MESSAGE_ROLES = {"system", "user", "assistant", "tool"}
 
 
 def _parse_dotenv_line(line: str) -> Optional[tuple[str, str]]:
@@ -179,6 +180,26 @@ def extract_hf_response_content(response: Any) -> Optional[str]:
     return content
 
 
+def validate_chat_messages(messages: Any) -> Optional[str]:
+    """Return a safe validation error, or None when messages are usable."""
+    if not isinstance(messages, list) or not messages:
+        return "At least one chat message is required."
+
+    for index, message in enumerate(messages):
+        if not isinstance(message, dict):
+            return f"Message {index} must be an object."
+
+        role = message.get("role")
+        if role not in _ALLOWED_MESSAGE_ROLES:
+            return f"Message {index} has an unsupported role."
+
+        content = message.get("content")
+        if not isinstance(content, str) or not content.strip():
+            return f"Message {index} must contain non-empty text."
+
+    return None
+
+
 def get_hf_config() -> Dict[str, Any]:
     """
     Returns current configuration settings without exposing the token secret.
@@ -228,6 +249,7 @@ def call_hf_inference(
     - MODEL_UNAVAILABLE: 503 Model loading or decommissioned
     - TIMEOUT: Request timed out
     - API_ERROR: Other network or HTTP error
+    - INVALID_REQUEST: Messages failed local validation
     - MALFORMED_RESPONSE: Output could not be parsed
     """
     cfg = get_hf_config()
@@ -251,6 +273,17 @@ def call_hf_inference(
             "content": None,
             "error_message": "HF_TOKEN environment variable is not configured. Set HF_TOKEN in .env or environment to enable live LLM generation.",
             "latency_ms": 0.0
+        }
+
+    validation_error = validate_chat_messages(messages)
+    if validation_error:
+        return {
+            "status": "INVALID_REQUEST",
+            "model": selected_model,
+            "provider": selected_provider,
+            "content": None,
+            "error_message": validation_error,
+            "latency_ms": 0.0,
         }
 
     t0 = time.perf_counter()

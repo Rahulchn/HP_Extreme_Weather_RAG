@@ -207,6 +207,48 @@ def test_hf_response_content_requires_nonempty_text():
         assert llm_client.extract_hf_response_content(response) is None
 
 
+def test_chat_message_validation_accepts_supported_roles():
+    messages = [
+        {"role": "system", "content": "Use only the supplied evidence."},
+        {"role": "user", "content": "Summarize the rainfall record."},
+        {"role": "assistant", "content": "I will ground the answer."},
+        {"role": "tool", "content": "Evidence payload."},
+    ]
+
+    assert llm_client.validate_chat_messages(messages) is None
+
+
+def test_chat_message_validation_rejects_malformed_inputs():
+    malformed_inputs = [
+        None,
+        [],
+        "not-a-list",
+        ["not-an-object"],
+        [{"role": "developer", "content": "unsupported"}],
+        [{"role": "user"}],
+        [{"role": "user", "content": None}],
+        [{"role": "user", "content": "   "}],
+    ]
+
+    for messages in malformed_inputs:
+        error = llm_client.validate_chat_messages(messages)
+        assert isinstance(error, str)
+        assert error
+
+
+def test_invalid_messages_fail_before_sdk_or_network(monkeypatch):
+    monkeypatch.delenv("HF_TOKEN", raising=False)
+
+    response = llm_client.call_hf_inference(
+        messages=[],
+        token="hf_test_token_for_local_validation",
+    )
+
+    assert response["status"] == "INVALID_REQUEST"
+    assert response["content"] is None
+    assert response["latency_ms"] == 0.0
+
+
 def test_response_sanitizer_redacts_common_credentials():
     message = (
         "api_key=abcdef1234567890 "

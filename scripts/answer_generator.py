@@ -158,38 +158,58 @@ def format_evidence_pack_for_prompt(evidence_pack: Dict[str, Any]) -> str:
     lines.append("If multiple evidence types are supplied in the Evidence Pack (e.g. CALCULATED + REPORTED), you MUST use 'MIXED'. NEVER output concatenated strings such as 'REPORTED | CALCULATED'.")
     return "\n".join(lines)
 
-def parse_llm_json_response(raw_text: str) -> Optional[Dict[str, Any]]:
-    """Strips markdown formatting and parses JSON response from the LLM."""
-    if not raw_text:
+def _is_answer_object(value: Any) -> bool:
+    """Return whether a decoded value has the minimum answer-contract shape."""
+    return (
+        isinstance(value, dict)
+        and isinstance(value.get("answer"), str)
+        and bool(value["answer"].strip())
+    )
+
+
+def _decode_first_answer_object(text: str) -> Optional[Dict[str, Any]]:
+    """Incrementally decode the first answer object embedded in arbitrary text."""
+    decoder = json.JSONDecoder()
+    cursor = 0
+    while True:
+        object_start = text.find("{", cursor)
+        if object_start < 0:
+            return None
+        try:
+            value, object_end = decoder.raw_decode(text, object_start)
+        except json.JSONDecodeError:
+            cursor = object_start + 1
+            continue
+        if _is_answer_object(value):
+            return value
+        # A complete non-answer object must not expose nested objects as answers.
+        cursor = max(object_end, object_start + 1)
+
+
+def parse_llm_json_response(raw_text: Any) -> Optional[Dict[str, Any]]:
+    """Parse a valid answer object from plain, fenced, or prose-wrapped output."""
+    if not isinstance(raw_text, str) or not raw_text.strip():
         return None
 
     cleaned = raw_text.strip()
-    # Strip markdown code blocks ```json ... ```
-    if "```" in cleaned:
-        match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", cleaned, re.IGNORECASE)
-        if match:
-            cleaned = match.group(1).strip()
-
     try:
-        data = json.loads(cleaned)
-        if isinstance(data, dict) and "answer" in data:
-            return data
-    except Exception:
-        pass
+        direct = json.loads(cleaned)
+    except json.JSONDecodeError:
+        direct = None
+    if _is_answer_object(direct):
+        return direct
 
-    # Try searching for outermost curly braces
-    try:
-        start = cleaned.find("{")
-        end = cleaned.rfind("}")
-        if start != -1 and end != -1 and end > start:
-            cand = cleaned[start:end+1]
-            data = json.loads(cand)
-            if isinstance(data, dict) and "answer" in data:
-                return data
-    except Exception:
-        pass
+    # Prefer complete fenced blocks, but continue if an earlier block is invalid.
+    for match in re.finditer(
+        r"```(?:json)?\s*([\s\S]*?)\s*```",
+        cleaned,
+        re.IGNORECASE,
+    ):
+        candidate = _decode_first_answer_object(match.group(1).strip())
+        if candidate:
+            return candidate
 
-    return None
+    return _decode_first_answer_object(cleaned)
 
 def generate_answer(evidence_pack: Dict[str, Any], **hf_kwargs) -> Dict[str, Any]:
     """

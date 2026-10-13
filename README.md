@@ -77,12 +77,15 @@ Install the development dependencies and run the focused regression suite:
 ```bash
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
+python -m compileall -q app scripts tests
 ```
 
-The tests cover configuration fallback behavior and credential redaction. The
-existing end-to-end routing and generation checks remain available under
-`scripts/test_*.py` for deeper validation. `pytest.ini` deliberately limits
-normal test discovery to `tests/`, keeping the default check fast and offline.
+The focused tests cover configuration, credential safety, request validation,
+and structured-answer parsing. The existing end-to-end routing and generation
+checks remain available under `scripts/test_*.py` for deeper validation.
+`pytest.ini` deliberately limits normal test discovery to `tests/`, keeping the
+default check fast and offline. GitHub Actions runs these checks on Python 3.11
+and 3.13 for every push and pull request.
 
 ## Offline smoke test
 

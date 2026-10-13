@@ -5,14 +5,27 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
 
 jobs:
   focused-tests:
+    name: Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.13"]
+
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
 
     steps:
       - name: Check out repository
@@ -21,7 +34,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
           cache: pip
           cache-dependency-path: requirements-dev.txt
 
@@ -29,13 +42,7 @@ jobs:
         run: python -m pip install "pytest>=8.3,<10"
 
       - name: Run focused regression tests
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
         run: python -m pytest -q
 
-      - name: Check modified modules compile
-        run: >-
-          python -m py_compile
-          app/rag_engine.py
-          scripts/llm_client.py
-          scripts/security_utils.py
+      - name: Compile all Python modules
+        run: python -m compileall -q app scripts tests

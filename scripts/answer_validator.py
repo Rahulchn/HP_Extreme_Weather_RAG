@@ -35,6 +35,22 @@ DISALLOWED_GEOGRAPHIES = [
     "atlantis", "xandaria", "jaipur", "bangalore", "kolkata"
 ]
 
+_NUMBER_PATTERN = re.compile(r"\b\d+(?:,\d{3})*(?:\.\d+)?\b")
+
+
+def _extract_numbers(value: Any) -> List[float]:
+    """Extract standalone integers and decimals from user-facing text."""
+    if not isinstance(value, str):
+        return []
+
+    numbers: List[float] = []
+    for token in _NUMBER_PATTERN.findall(value):
+        try:
+            numbers.append(float(token.replace(",", "")))
+        except ValueError:
+            continue
+    return numbers
+
 def validate_answer(
     answer_obj: Dict[str, Any],
     evidence_pack: Dict[str, Any]
@@ -104,6 +120,9 @@ def validate_answer(
     hallucinated_citations = []
 
     for c in citations:
+        if not isinstance(c, dict):
+            hallucinated_citations.append(c)
+            continue
         c_ev_id = c.get("evidence_id")
         c_chunk_id = c.get("chunk_id")
         c_src_id = c.get("source_id")
@@ -150,7 +169,8 @@ def validate_answer(
     numerical_pass = True
     if route == "STRUCTURED" and supplied_items:
         # Collect all valid authoritative numeric metrics from the Evidence Pack
-        valid_numbers = set()
+        # Query numbers, such as a requested year, are safe context to repeat.
+        valid_numbers = set(_extract_numbers(evidence_pack.get("query", "")))
         primary_metrics = []
         for item in supplied_items:
             s_val = item.get("structured_value") or {}
@@ -159,16 +179,16 @@ def validate_answer(
                       "max_single_day_rainfall_mm", "count", "valid_cells_count"]:
                 if k in s_val and s_val[k] is not None:
                     val = s_val[k]
-                    valid_numbers.add(float(val))
+                    try:
+                        numeric_val = float(val)
+                    except (TypeError, ValueError):
+                        continue
+                    valid_numbers.add(numeric_val)
                     if k in ("max_rainfall_mm", "mean_rainfall_mm", "annual_total_rainfall_mm", "max_single_day_rainfall_mm", "count"):
-                        primary_metrics.append((k, val))
+                        primary_metrics.append((k, numeric_val))
 
             # Also extract numbers from text notes
-            for num in re.findall(r"\b\d+(?:\.\d+)?\b", item.get("text", "")):
-                try:
-                    valid_numbers.add(float(num))
-                except ValueError:
-                    pass
+            valid_numbers.update(_extract_numbers(item.get("text", "")))
 
         # 1. Primary metric preservation: at least one key metric or zero indication must be in answer
         ans_status = answer_obj.get("status", "")
@@ -181,10 +201,10 @@ def validate_answer(
         elif primary_metrics and ans_status == "OK":
             found_primary = False
             for k, val in primary_metrics:
-                val_str = str(val)
-                val_rounded_1 = f"{val:.1f}" if isinstance(val, float) else val_str
-                val_rounded_2 = f"{val:.2f}" if isinstance(val, float) else val_str
-                patterns = [re.escape(val_str), re.escape(val_rounded_1), re.escape(val_rounded_2)]
+                patterns = [
+                    re.escape(candidate)
+                    for candidate in {str(val), f"{val:g}", f"{val:.1f}", f"{val:.2f}"}
+                ]
                 regex = r"(?<!\d)(" + "|".join(patterns) + r")(?!\d)"
                 if re.search(regex, ans_text):
                     found_primary = True
@@ -193,12 +213,10 @@ def validate_answer(
                 errors.append(f"NUMERICAL_PRESERVATION_VIOLATION: Authoritative primary metric(s) missing from answer: {primary_metrics}")
                 numerical_pass = False
 
-        # 2. Prevent fabricated numerical metrics: any floating point numbers in the answer must be grounded
-        answer_floats = [float(f) for f in re.findall(r"\b\d+\.\d+\b", ans_text)]
-        for af in answer_floats:
-            # Allow numbers that match valid_numbers (within epsilon)
-            if not any(abs(af - vn) < 0.05 for vn in valid_numbers):
-                errors.append(f"NUMERICAL_FABRICATION_VIOLATION: Number '{af}' in answer text is not grounded in Evidence Pack.")
+        # 2. Prevent fabricated numerical metrics, including whole-number claims.
+        for answer_number in _extract_numbers(ans_text):
+            if not any(abs(answer_number - valid_number) < 0.05 for valid_number in valid_numbers):
+                errors.append(f"NUMERICAL_FABRICATION_VIOLATION: Number '{answer_number}' in answer text is not grounded in Evidence Pack.")
                 numerical_pass = False
 
     # -------------------------------------------------------------

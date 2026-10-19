@@ -85,9 +85,10 @@ def validate_answer(
     # -------------------------------------------------------------
     # A. Schema Validation
     # -------------------------------------------------------------
-    ans_text = answer_obj.get("answer")
-    if not ans_text or not isinstance(ans_text, str) or len(ans_text.strip()) == 0:
+    raw_ans_text = answer_obj.get("answer")
+    if not raw_ans_text or not isinstance(raw_ans_text, str) or len(raw_ans_text.strip()) == 0:
         errors.append("SCHEMA_ERROR: Missing or empty 'answer' text.")
+    ans_text = raw_ans_text if isinstance(raw_ans_text, str) else ""
 
     ans_status = answer_obj.get("status")
     if ans_status not in VALID_STATUSES:
@@ -109,7 +110,16 @@ def validate_answer(
     # -------------------------------------------------------------
     # B. Citation Integrity Validation
     # -------------------------------------------------------------
-    supplied_items = evidence_pack.get("evidence_items", [])
+    raw_supplied_items = evidence_pack.get("evidence_items", [])
+    if not isinstance(raw_supplied_items, list):
+        warnings.append("EVIDENCE_PACK_WARNING: 'evidence_items' must be a list; ignoring malformed value.")
+        raw_supplied_items = []
+    supplied_items = [item for item in raw_supplied_items if isinstance(item, dict)]
+    malformed_item_count = len(raw_supplied_items) - len(supplied_items)
+    if malformed_item_count:
+        warnings.append(
+            f"EVIDENCE_PACK_WARNING: Ignored {malformed_item_count} malformed evidence item(s)."
+        )
     valid_evidence_ids = {item["evidence_id"] for item in supplied_items if item.get("evidence_id")}
     valid_chunk_ids = {item["chunk_id"] for item in supplied_items if item.get("chunk_id")}
     valid_source_ids = {item["source_id"] for item in supplied_items if item.get("source_id")}

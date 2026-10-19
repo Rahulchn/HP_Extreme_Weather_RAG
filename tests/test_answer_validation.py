@@ -62,3 +62,26 @@ def test_malformed_citation_fails_without_crashing():
         "CITATION_INTEGRITY_VIOLATION" in error
         for error in result["validation_errors"]
     )
+
+
+def test_missing_answer_fails_without_crashing():
+    answer = _answer("placeholder")
+    answer.pop("answer")
+
+    result = validate_answer(answer, _evidence_pack())
+
+    assert result["status"] == "FAILED"
+    assert any("Missing or empty 'answer'" in error for error in result["validation_errors"])
+
+
+def test_malformed_evidence_items_are_ignored_safely():
+    evidence_pack = _evidence_pack()
+    evidence_pack["evidence_items"].append("not-an-evidence-object")
+
+    result = validate_answer(
+        _answer("In 2023, Kangra recorded 79.8 mm across 3 events."),
+        evidence_pack,
+    )
+
+    assert result["status"] == "PASSED"
+    assert any("Ignored 1 malformed evidence item" in warning for warning in result["warnings"])

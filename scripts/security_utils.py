@@ -17,6 +17,11 @@ def sanitize_sensitive_text(value: Any) -> str:
         text,
     )
     text = re.sub(
+        r"\b(?:AKIA|ASIA)[A-Z0-9]{16}\b",
+        "[REDACTED_AWS_ACCESS_KEY]",
+        text,
+    )
+    text = re.sub(
         r"(?i)bearer\s+[A-Za-z0-9._~+/=-]{10,}",
         "Bearer [REDACTED_TOKEN]",
         text,
@@ -27,7 +32,8 @@ def sanitize_sensitive_text(value: Any) -> str:
         text,
     )
     text = re.sub(
-        r"(?i)\b(api[_-]?key|x-api-key|access[_-]?token|refresh[_-]?token|"
+        r"(?i)\b(aws_(?:access_key_id|secret_access_key|session_token)|"
+        r"api[_-]?key|x-api-key|access[_-]?token|refresh[_-]?token|"
         r"client[_-]?secret|secret|token|password)\s*([:=])\s*[^\s,;&#]+",
         r"\1\2[REDACTED]",
         text,

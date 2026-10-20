@@ -278,3 +278,20 @@ def test_response_sanitizer_handles_password_and_refresh_token():
     assert "hunter2" not in sanitized
     assert "refresh-me" not in sanitized
     assert "result=denied" in sanitized
+
+
+def test_response_sanitizer_redacts_aws_credentials():
+    message = (
+        "access id AKIAIOSFODNN7EXAMPLE "
+        "aws_access_key_id=ASIAIOSFODNN7EXAMPLE "
+        "aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY "
+        "aws_session_token=temporary-session-secret result=denied"
+    )
+
+    sanitized = sanitize_sensitive_text(message)
+
+    assert "AKIAIOSFODNN7EXAMPLE" not in sanitized
+    assert "ASIAIOSFODNN7EXAMPLE" not in sanitized
+    assert "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" not in sanitized
+    assert "temporary-session-secret" not in sanitized
+    assert "result=denied" in sanitized

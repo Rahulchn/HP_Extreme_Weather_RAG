@@ -120,11 +120,6 @@ def validate_answer(
         warnings.append(
             f"EVIDENCE_PACK_WARNING: Ignored {malformed_item_count} malformed evidence item(s)."
         )
-    valid_evidence_ids = {item["evidence_id"] for item in supplied_items if item.get("evidence_id")}
-    valid_chunk_ids = {item["chunk_id"] for item in supplied_items if item.get("chunk_id")}
-    valid_source_ids = {item["source_id"] for item in supplied_items if item.get("source_id")}
-    valid_doc_ids = {item["document_id"] for item in supplied_items if item.get("document_id")}
-
     citation_count = len(citations)
     valid_citations_count = 0
     hallucinated_citations = []
@@ -138,21 +133,26 @@ def validate_answer(
         c_src_id = c.get("source_id")
         c_doc_id = c.get("document_id")
 
-        is_valid = False
-        # Citation must match an evidence_id or chunk_id from the Evidence Pack
-        if c_ev_id and c_ev_id in valid_evidence_ids:
-            is_valid = True
-        elif c_chunk_id and c_chunk_id in valid_chunk_ids:
-            is_valid = True
-        elif not c_ev_id and not c_chunk_id and c_src_id in valid_source_ids:
-            is_valid = True
+        # Every supplied identifier must resolve to the same evidence item.
+        # This prevents cross-wiring a valid evidence ID to another item's
+        # otherwise-valid source or document ID.
+        has_locator = bool(c_ev_id or c_chunk_id or c_src_id)
+        matching_items = supplied_items
+        for field, value in (
+            ("evidence_id", c_ev_id),
+            ("chunk_id", c_chunk_id),
+            ("source_id", c_src_id),
+        ):
+            if value:
+                matching_items = [
+                    item for item in matching_items if item.get(field) == value
+                ]
+        if c_doc_id is not None:
+            matching_items = [
+                item for item in matching_items if item.get("document_id") == c_doc_id
+            ]
 
-        # Check source_id and doc_id if provided
-        if is_valid:
-            if c_src_id and c_src_id not in valid_source_ids:
-                is_valid = False
-            if c_doc_id and c_doc_id not in valid_doc_ids and c_doc_id is not None:
-                is_valid = False
+        is_valid = has_locator and bool(matching_items)
 
         if is_valid:
             valid_citations_count += 1

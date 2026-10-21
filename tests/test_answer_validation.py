@@ -85,3 +85,47 @@ def test_malformed_evidence_items_are_ignored_safely():
 
     assert result["status"] == "PASSED"
     assert any("Ignored 1 malformed evidence item" in warning for warning in result["warnings"])
+
+
+def test_rejects_cross_wired_citation_identifiers():
+    evidence_pack = _evidence_pack()
+    evidence_pack["evidence_items"].append(
+        {
+            "evidence_id": "E2",
+            "source_id": "SRC2",
+            "document_id": "DOC2",
+            "chunk_id": "CHUNK2",
+            "text": "A separate evidence record.",
+        }
+    )
+
+    result = validate_answer(
+        _answer(
+            "In 2023, Kangra recorded 79.8 mm across 3 events.",
+            citations=[{"evidence_id": "E1", "source_id": "SRC2"}],
+        ),
+        evidence_pack,
+    )
+
+    assert result["status"] == "FAILED"
+    assert result["citation_integrity_pct"] == 0.0
+    assert any(
+        "CITATION_INTEGRITY_VIOLATION" in error
+        for error in result["validation_errors"]
+    )
+
+
+def test_rejects_invalid_identifier_even_if_another_identifier_is_valid():
+    evidence_pack = _evidence_pack()
+    evidence_pack["evidence_items"][0]["chunk_id"] = "CHUNK1"
+
+    result = validate_answer(
+        _answer(
+            "In 2023, Kangra recorded 79.8 mm across 3 events.",
+            citations=[{"evidence_id": "UNKNOWN", "chunk_id": "CHUNK1"}],
+        ),
+        evidence_pack,
+    )
+
+    assert result["status"] == "FAILED"
+    assert result["citation_integrity_pct"] == 0.0

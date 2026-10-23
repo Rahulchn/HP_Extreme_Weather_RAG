@@ -132,6 +132,7 @@ def validate_answer(
         c_chunk_id = c.get("chunk_id")
         c_src_id = c.get("source_id")
         c_doc_id = c.get("document_id")
+        c_page = c.get("page")
 
         # Every supplied identifier must resolve to the same evidence item.
         # This prevents cross-wiring a valid evidence ID to another item's
@@ -150,6 +151,13 @@ def validate_answer(
         if c_doc_id is not None:
             matching_items = [
                 item for item in matching_items if item.get("document_id") == c_doc_id
+            ]
+        if c_page is not None:
+            matching_items = [
+                item
+                for item in matching_items
+                if item.get("page") is not None
+                and str(item.get("page")).strip() == str(c_page).strip()
             ]
 
         is_valid = has_locator and bool(matching_items)

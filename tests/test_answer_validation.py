@@ -129,3 +129,58 @@ def test_rejects_invalid_identifier_even_if_another_identifier_is_valid():
 
     assert result["status"] == "FAILED"
     assert result["citation_integrity_pct"] == 0.0
+
+
+def test_rejects_citation_page_from_another_evidence_record():
+    evidence_pack = _evidence_pack()
+    evidence_pack["evidence_items"][0].update(
+        {"document_id": "DOC1", "chunk_id": "CHUNK1", "page": 4}
+    )
+
+    result = validate_answer(
+        _answer(
+            "In 2023, Kangra recorded 79.8 mm across 3 events.",
+            citations=[
+                {
+                    "evidence_id": "E1",
+                    "source_id": "SRC1",
+                    "document_id": "DOC1",
+                    "chunk_id": "CHUNK1",
+                    "page": 5,
+                }
+            ],
+        ),
+        evidence_pack,
+    )
+
+    assert result["status"] == "FAILED"
+    assert result["citation_integrity_pct"] == 0.0
+
+
+def test_accepts_equivalent_string_page_number():
+    evidence_pack = _evidence_pack()
+    evidence_pack["evidence_items"][0]["page"] = 4
+
+    result = validate_answer(
+        _answer(
+            "In 2023, Kangra recorded 79.8 mm across 3 events.",
+            citations=[{"evidence_id": "E1", "source_id": "SRC1", "page": "4"}],
+        ),
+        evidence_pack,
+    )
+
+    assert result["status"] == "PASSED"
+    assert result["citation_integrity_pct"] == 100.0
+
+
+def test_rejects_page_when_evidence_has_no_page():
+    result = validate_answer(
+        _answer(
+            "In 2023, Kangra recorded 79.8 mm across 3 events.",
+            citations=[{"evidence_id": "E1", "source_id": "SRC1", "page": "None"}],
+        ),
+        _evidence_pack(),
+    )
+
+    assert result["status"] == "FAILED"
+    assert result["citation_integrity_pct"] == 0.0

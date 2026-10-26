@@ -186,6 +186,7 @@ def validate_answer(
     # -------------------------------------------------------------
     numerical_pass = True
     if route == "STRUCTURED" and supplied_items:
+        answer_numbers = _extract_numbers(ans_text)
         # Collect all valid authoritative numeric metrics from the Evidence Pack
         # Query numbers, such as a requested year, are safe context to repeat.
         valid_numbers = set(_extract_numbers(evidence_pack.get("query", "")))
@@ -219,12 +220,10 @@ def validate_answer(
         elif primary_metrics and ans_status == "OK":
             found_primary = False
             for k, val in primary_metrics:
-                patterns = [
-                    re.escape(candidate)
-                    for candidate in {str(val), f"{val:g}", f"{val:.1f}", f"{val:.2f}"}
-                ]
-                regex = r"(?<!\d)(" + "|".join(patterns) + r")(?!\d)"
-                if re.search(regex, ans_text):
+                # Compare complete values so grouping commas are accepted and
+                # digits inside other decimals cannot satisfy preservation.
+                preserved_values = {val, float(f"{val:.1f}"), float(f"{val:.2f}")}
+                if any(number in preserved_values for number in answer_numbers):
                     found_primary = True
                     break
             if not found_primary:
@@ -232,7 +231,7 @@ def validate_answer(
                 numerical_pass = False
 
         # 2. Prevent fabricated numerical metrics, including whole-number claims.
-        for answer_number in _extract_numbers(ans_text):
+        for answer_number in answer_numbers:
             if not any(abs(answer_number - valid_number) < 0.05 for valid_number in valid_numbers):
                 errors.append(f"NUMERICAL_FABRICATION_VIOLATION: Number '{answer_number}' in answer text is not grounded in Evidence Pack.")
                 numerical_pass = False

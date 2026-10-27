@@ -220,8 +220,7 @@ def generate_answer(evidence_pack: Dict[str, Any], **hf_kwargs) -> Dict[str, Any
 
     # 1. Phase 5: NEGATIVE_REJECTED queries use deterministic safe refusal
     if route == "NEGATIVE_REJECTED" or evidence_pack.get("status") == "NO_SUPPORTED_EVIDENCE":
-        if not evidence_pack.get("evidence_items"):
-            return generate_deterministic_negative_answer(evidence_pack)
+        return generate_deterministic_negative_answer(evidence_pack)
 
     # 2. Build user prompt
     user_prompt = format_evidence_pack_for_prompt(evidence_pack)

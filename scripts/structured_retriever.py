@@ -523,6 +523,14 @@ def get_event_by_id(event_id: str) -> Dict[str, Any]:
 # -------------------------------------------------------------
 def get_telemetry_2026(district: Optional[str] = None) -> Dict[str, Any]:
     norm_dist = normalize_district(district) if district else None
+    if district and not norm_dist:
+        return {
+            "status": "NO_SUPPORTED_EVIDENCE",
+            "message": f"District '{district}' is outside authorized scope.",
+            "records_count": 0,
+            "records": []
+        }
+
     conn = get_connection()
     cur = conn.cursor()
 

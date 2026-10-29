@@ -398,6 +398,28 @@ def get_events_by_type(event_type: str, district: Optional[str] = None,
             "events": []
         }
 
+    start_year = VALID_YEAR_MIN if start_year is None else start_year
+    end_year = VALID_YEAR_MAX if end_year is None else end_year
+    if any(
+        isinstance(year, bool)
+        or not isinstance(year, int)
+        or not VALID_YEAR_MIN <= year <= VALID_YEAR_MAX
+        for year in (start_year, end_year)
+    ):
+        return {
+            "status": "NO_SUPPORTED_EVIDENCE",
+            "message": f"Year range bounds must be integers within {VALID_YEAR_MIN}-{VALID_YEAR_MAX}.",
+            "count": 0,
+            "events": []
+        }
+    if start_year > end_year:
+        return {
+            "status": "NO_SUPPORTED_EVIDENCE",
+            "message": "Start year must not be later than end year.",
+            "count": 0,
+            "events": []
+        }
+
     conn = get_connection()
     cur = conn.cursor()
 
@@ -407,12 +429,8 @@ def get_events_by_type(event_type: str, district: Optional[str] = None,
     if norm_dist:
         conditions.append("district = ?")
         params.append(norm_dist)
-    if start_year:
-        conditions.append("year >= ?")
-        params.append(start_year)
-    if end_year:
-        conditions.append("year <= ?")
-        params.append(end_year)
+    conditions.extend(["year >= ?", "year <= ?"])
+    params.extend([start_year, end_year])
 
     where_clause = " WHERE " + " AND ".join(conditions)
     query = f"""
